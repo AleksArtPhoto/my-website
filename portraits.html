@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Album</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles_portraits.css">
+  <script defer src="script_portraits.js"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Навигация -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+      <div class="text-2xl font-bold">Aleks Art Photo</div>
+      <img src="Website_AleksArtPhoto_1/logo/logo1.png" width="50" height="50" alt="logo" style="position: relative; right: 450px;">
+      <nav class="space-x-4">
+        <a href="home.html" class="hover:text-blue-600">Home</a>
+        <a href="services.html" class="hover:text-blue-600">Services</a>
+        <a href="calendar.html" class="hover:text-blue-600">Calendar</a>
+        <a href="home.html#contact" class="hover:text-blue-600">Contacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Фотоальбом -->
+  <main class="container mx-auto px-4 py-8">
+    <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <img src="Website_AleksArtPhoto_1/Portfolio/p21.jpg" alt="photo1" class="cursor-pointer album-img rounded shadow-md">
+      <img src="Website_AleksArtPhoto_1/Portfolio/p10.jpg" alt="photo2" class="cursor-pointer album-img rounded shadow-md">
+      <img src="Website_AleksArtPhoto_1/Portfolio/p24.jpg" alt="photo3" class="cursor-pointer album-img rounded shadow-md">
+      <img src="Website_AleksArtPhoto_1/Portfolio/p12.jpg" alt="photo4" class="cursor-pointer album-img rounded shadow-md">
+    </div>
+  </main>
+
+  <!-- Модальное окно -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-50 modal-overlay overflow-hidden">
+    <button id="closeBtn" class="absolute top-4 right-6 text-white text-3xl font-bold z-50">&times;</button>
+    <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-50">&#10094;</button>
+    <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-50">&#10095;</button>
+
+    <div class="flex items-center justify-center w-full h-full">
+      <img id="modalImg" src="" alt="full-view">
+    </div>
+
+    <!-- Слайдер зума -->
+    <div id="sliderContainer" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-20 backdrop-blur-md px-4 py-2 rounded z-50">
+      <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1" class="w-64 sm:w-96">
+    </div>
+  </div>
+</body>
+</html>

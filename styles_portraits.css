@@ -1,0 +1,56 @@
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.grayscale-when-modal .album-img {
+  filter: grayscale(100%);
+  opacity: 0.4;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+#modalImg {
+  transition: transform 0.3s ease;
+  cursor: grab;
+  user-select: none;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+}
+
+#sliderContainer input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  height: 6px;
+  position: relative;
+}
+
+#sliderContainer input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #aaa;
+  border-radius: 3px;
+}
+
+#sliderContainer input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  margin-top: -5px;
+  background-color: #666;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#sliderContainer input[type="range"]:focus {
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  #sliderContainer {
+    width: 80%;
+  }
+}
