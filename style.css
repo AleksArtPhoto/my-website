@@ -8,101 +8,39 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 
 /* =========================
-   SLIDER
+   HERO IMAGE SLIDER
 ========================= */
 
-.slider-container {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 15px;
-  perspective: 1200px;
-  box-sizing: border-box;
+.hero-slider {
   position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
 }
 
-.slider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  transition: transform 1s ease;
-  position: relative;
-  height: 300px;
-  width: 100%;
-}
-
-.slide {
+.hero-slide {
   position: absolute;
-  width: 250px;
+  width: 100%;
   height: 100%;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  box-sizing: border-box;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.slide h2 {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.slide a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.slide a:hover {
-  text-decoration: underline;
-}
-
-
-/* positions */
-
-.active { transform: translateX(0) scale(1.2); z-index: 3; opacity: 1; }
-.left   { transform: translateX(-120%) rotateY(45deg) scale(0.9); z-index: 2; opacity: 0.6; }
-.right  { transform: translateX(120%) rotateY(-45deg) scale(0.9); z-index: 2; opacity: 0.6; }
-.hidden-left  { transform: translateX(-200%) scale(0.5); opacity: 0; z-index: 1; }
-.hidden-right { transform: translateX(200%) scale(0.5); opacity: 0; z-index: 1; }
-
-
-/* buttons */
-
-.slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(0,0,0,0.6);
-  border: none;
-  color: #fff;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background 0.3s;
-}
-
-.slider-button:hover {
-  background: #000;
-}
-
-.slider-button:first-of-type {
-  left: 10px;
-}
-
-.slider-button:last-of-type {
-  right: 10px;
+.hero-slide.active {
+  opacity: 1;
 }
 
 
@@ -120,7 +58,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-front img {
   transition: filter 0.4s ease, transform 0.4s ease;
-  filter: grayscale(0%);
 }
 
 .service-card:hover .card-front img {
@@ -134,10 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* =========================
-   PORTFOLIO
+PORTFOLIO
 ========================= */
 
 .portfolio-item {
@@ -173,73 +107,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-item:hover {
-  grid-column: span 3 / span 3;
-  grid-row: span 2 / span 2;
+  grid-column: span 3;
+  grid-row: span 2;
   z-index: 10;
+}
+/* PORTFOLIO IMAGE ROTATION */
+
+.portfolio-rotator {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 100%; /* квадрат как раньше */
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.portfolio-rotator img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.portfolio-rotator img.active {
+  opacity: 1;
 }
 
 
 /* =========================
-   HERO MOBILE FIX
+   MOBILE FIXES
 ========================= */
 
 @media (max-width: 768px) {
 
-  section.relative.text-white img {
-    height: 60vh;
-    object-fit: cover;
+  .hero-slider {
+    height: 50vh;
   }
 
-  section.relative.text-white > div {
-    flex-direction: column !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  section.relative.text-white h1 {
+  h1 {
     font-size: 1.8rem !important;
   }
 
-  section.relative.text-white p {
-    font-size: 1rem !important;
-  }
-}
-
-
-/* =========================
-   SLIDER MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-  .slider {
-    height: auto;
-  }
-
-  .slide {
-    width: 85%;
-    max-width: 260px;
-  }
-
-  .active {
-    transform: translateX(0) scale(1.05);
-  }
-
-  .left {
-    transform: translateX(-90%) scale(0.85);
-    opacity: 0.5;
-  }
-
-  .right {
-    transform: translateX(90%) scale(0.85);
-    opacity: 0.5;
-  }
-
-  .hidden-left,
-  .hidden-right {
-    display: none;
+  p {
+    font-size: 1rem;
   }
 
   nav {
@@ -258,66 +171,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
   }
 
-  .slide {
-    width: 92%;
-    padding: 14px;
-  }
-
-  .slider-button {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-
   .portfolio-item:hover {
     grid-column: auto;
     grid-row: auto;
   }
-}
 
-
-/* =========================
-   HARD MOBILE FIX (HERO)
-========================= */
-
-@media (max-width: 768px) {
-
-  /* HERO section становится нормальным блоком */
-  section.relative.text-white {
-    position: relative;
-  }
-
-  /* картинка */
-  section.relative.text-white img {
-    height: auto !important;
-    min-height: 260px;
-  }
-
-  /* ГЛАВНОЕ — убираем absolute */
-  section.relative.text-white > div {
-    position: relative !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 25px;
-    padding: 25px 15px;
-    background: white;
-    color: #222;
-  }
-
-  /* обе текстовые колонки */
-  section.relative.text-white > div > div {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  /* заголовок */
-  section.relative.text-white h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.3;
-  }
-
-  section.relative.text-white p {
-    font-size: 1rem !important;
-  }
 }
