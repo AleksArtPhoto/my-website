@@ -29,3 +29,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* ======================================
+BACK TO TOP BUTTON
+   ====================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTopBtn = document.getElementById("backToTop");
+
+  // Если кнопки нет в HTML, выходим, чтобы не было ошибок
+  if (!backToTopBtn) return;
+
+  // Логика показа/скрытия при скролле
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  });
+
+  // Логика клика
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+});
