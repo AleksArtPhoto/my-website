@@ -217,3 +217,30 @@ PORTFOLIO
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* Стили ссылок навигации */
+.nav-link {
+  font-size: 1.125rem;
+  color: #1f2937;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+}
+
+.nav-link-mobile {
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Фикс для лого на мобильных */
+@media (max-width: 768px) {
+  header img {
+    width: 35px;
+    height: 35px;
+  }
+}

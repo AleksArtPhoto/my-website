@@ -14,19 +14,38 @@
 
 <!-- HEADER -->
 <header class="bg-white shadow-md sticky top-0 z-50">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="text-2xl font-bold" style="position: relative; left: 190px;">Aleks Art Photo</div>
-    <div class="flex items-center gap-3">
-      <img src="logo1.png" width="50" height="50" alt="logo" style="position: relative; right: 500px; top: -2px;">
-    </div>
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    
+    <!-- Логотип и Название (Группа) -->
+    <a href="index.html" class="flex items-center gap-3 transition-transform hover:scale-105">
+      <img src="logo/logo1.png" width="40" height="40" alt="logo" class="object-contain">
+      <span class="text-xl md:text-2xl font-bold tracking-tight">Aleks Art Photo</span>
+    </a>
 
-    <nav class="hidden md:flex space-x-6">
-      <a href="portfolio.html" class="text-lg hover:text-blue-600">Portfolio</a>
-      <a href="#services" class="text-lg hover:text-blue-600">Services</a>
-      <a href="calendar.html" class="text-lg hover:text-blue-600">Calendar</a>
-      <a href="#contact" class="text-lg hover:text-blue-600">Contact</a>
-      <a href="#faq" class="text-lg hover:text-blue-600">FAQ</a>
+    <!-- Навигация для Десктопа -->
+    <nav class="hidden md:flex space-x-8">
+      <a href="portfolio.html" class="nav-link">Portfolio</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="calendar.html" class="nav-link">Calendar</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#faq" class="nav-link">FAQ</a>
     </nav>
+
+    <!-- Кнопка Бургер (только для мобильных) -->
+    <button id="mobile-menu-btn" class="md:hidden p-2 focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Мобильное Меню (Выпадающее) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 flex flex-col p-4 space-y-4 shadow-lg">
+    <a href="portfolio.html" class="nav-link-mobile">Portfolio</a>
+    <a href="#services" class="nav-link-mobile">Services</a>
+    <a href="calendar.html" class="nav-link-mobile">Calendar</a>
+    <a href="#contact" class="nav-link-mobile">Contact</a>
+    <a href="#faq" class="nav-link-mobile">FAQ</a>
   </div>
 </header>
 
