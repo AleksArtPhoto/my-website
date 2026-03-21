@@ -118,15 +118,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Закрываем меню при клике на любую ссылку внутри
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+        menuBtn.onclick = function(e) {
+            e.preventDefault();
+            // Переключаем класс hidden
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            } else {
                 mobileMenu.classList.add('hidden');
-            });
+                mobileMenu.classList.remove('flex');
+            }
+        };
+
+        // Закрываем при клике на ссылки
+        const links = mobileMenu.querySelectorAll('a');
+        links.forEach(link => {
+            link.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            };
         });
     }
 });
