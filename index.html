@@ -46,8 +46,7 @@ I work with portraits, commercial projects, interiors and product photography, a
 
 My goal is simple — create visuals that feel professional, natural and timeless.
     </p>
-    <a href="calendar.html"
-      class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">
+    <a href="calendar.html" class="btn-nordic px-6 py-3 rounded-full shadow-sm">
       Book
     </a>
   </div>
@@ -138,8 +137,7 @@ My goal is simple — create visuals that feel professional, natural and timeles
       Like what you see?
 Let’s create something similar for you.
     </p>
-    <a href="calendar.html"
-      class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">
+    <a href="calendar.html" class="btn-nordic px-6 py-3 rounded-full shadow-sm">
       Book
     </a>
   </div>
@@ -152,7 +150,7 @@ Let’s create something similar for you.
     <h2 class="text-3xl font-bold mb-10 text-gray-900 uppercase tracking-wide">What you can expect</h2>
     
     <div class="inline-block text-left">
-      <ul class="space-y-6 text-lg md:text-xl text-gray-800">
+      <ul class="flex flex-wrap justify-center gap-8 text-lg md:text-xl text-gray-800">
         
         <!-- Professional equipment -->
         <li class="flex items-center">
@@ -216,15 +214,45 @@ Let’s create something similar for you.
   </div>
 </section>
 
-
-<!-- SERVICES -->
+<!-- SERVICES SECTION -->
 <section id="services" class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold mb-12 text-center">Services and Packages</h2>
 
-    <!-- Сетка на 4 колонки (на десктопе) -->
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+    <!-- Контейнер переключателя (Вне сеток) -->
+    <div class="flex justify-center mb-12">
+      <div id="toggle-container" class="relative bg-gray-200 p-1 rounded-full flex items-center w-72 h-12 shadow-inner cursor-pointer overflow-hidden">
+        <div id="toggle-bg" class="absolute h-10 rounded-full shadow-md transition-all duration-300 ease-in-out" 
+     style="width: 138px; left: 4px; background: linear-gradient(135deg, #bdc3c7 0%, #ffffff 50%, #bdc3c7 100%);"></div>
+        <div id="text-b2c" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300" style="color: white;">For Individuals</div>
+        <div id="text-b2b" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300" style="color: #6b7280;">For Business</div>
+      </div>
+    </div>
 
+    <!-- 1. БЛОК ДЛЯ ОБЫЧНЫХ КЛИЕНТОВ (B2C) - Ваша старая структура на 5 колонок -->
+    <div id="b2c-content" class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+      
+      <!-- 1. PHOTOGRAPHY -->
+      <div class="flex flex-col gap-4">
+        <h3 class="text-2xl font-extrabold mb-2 text-gray-800 border-b-2 border-blue-500 pb-2">1. PHOTOGRAPHY</h3>
+        <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+          <h4 class="font-bold text-lg">MINI SESSION — 2,500 DKK</h4>
+          <ul class="text-sm mt-2 space-y-1">
+            <li>• 30 min session</li>
+            <li>• 5 edited images</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Остальные 4 колонки (Product, Interior, Video, Animation) для частников -->
+      <!-- Скопируйте сюда свои старые блоки из GitHub версии -->
+
+    </div>
+
+    <!-- 2. БЛОК ДЛЯ БИЗНЕСА (B2B) - Новая структура на 5 колонок -->
+    <div id="b2b-content" class="hidden grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+      
+      <!-- 1. COMMERCIAL PHOTOGRAPHY -->
       <!-- 1. PHOTOGRAPHY -->
       <div class="flex flex-col gap-4">
         <h3 class="text-2xl font-extrabold mb-2 text-gray-800 border-b-2 border-blue-500 pb-2">1. PHOTOGRAPHY SERVICES</h3>
@@ -293,9 +321,11 @@ Let’s create something similar for you.
           <div class="mt-4 p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500">
             <p class="text-xs font-bold uppercase text-gray-500 mb-2">Add-ons:</p>
             <ul class="text-sm space-y-1 text-gray-700">
-              <li>• Logo Animation</li>
-              <li>• Motion Graphics</li>
-              <li>• Context Motion</li>
+              <li>• Express Delivery (48h) — 800 DKK</li>
+              <li>• Extra Retouched Photo (per piece) — 150 DKK</li>
+              <li>• All Raw/Unedited Files — 3.000 DKK</li>
+              <li>• Additional Hour of Shooting — 2.000 DKK</li>
+              <li>• Location Scout/Travel Fee — 500-2000 DKK</li>
             </ul>
           </div>
         </div>
@@ -357,9 +387,10 @@ Let’s create something similar for you.
           <div class="mt-4 p-4 bg-gray-100 rounded-lg border-l-4 border-green-500">
             <p class="text-xs font-bold uppercase text-gray-500 mb-2">Add-ons:</p>
             <ul class="text-sm space-y-1 text-gray-700">
-              <li>• Logo Animation</li>
-              <li>• Motion Graphics</li>
-              <li>• Context Motion</li>
+              <li>• Background Removal (Clipping Path) — 200 DKK per piece</li>
+              <li>• Props Sourcing & Styling — 1.100 DKK + cost of props</li>
+              <li>• Model Booking Fee  — 2.500–5000 DKK</li>
+              <li>• Rush Processing for E-commerce — +25% of the order value</li>
             </ul>
           </div>
         </div>
@@ -409,9 +440,9 @@ Let’s create something similar for you.
           <div class="mt-4 p-4 bg-gray-100 rounded-lg border-l-4 border-yellow-500">
             <p class="text-xs font-bold uppercase text-gray-500 mb-2">Add-ons:</p>
             <ul class="text-sm space-y-1 text-gray-700">
-              <li>• Logo Animation</li>
-              <li>• Motion Graphics</li>
-              <li>• Context Motion</li>
+              <li>• Twilight / Blue Hour Shoot — +1.500 DKK</li>
+              <li>• Digital Decluttering — 400 DKK per piece</li>
+              <li>• Floor Plan Creation (2D/3D) — 500 – 2.500 DKK</li>
             </ul>
           </div>
         </div>
@@ -496,25 +527,24 @@ Let’s create something similar for you.
                 </ul>
               </div>
           </div>
-        </div>
           
           <!-- Add-ons блок -->
           <div class="mt-4 p-4 bg-gray-100 rounded-lg border-l-4 border-red-500">
             <p class="text-xs font-bold uppercase text-gray-500 mb-2">Add-ons:</p>
             <ul class="text-sm space-y-1 text-gray-700">
-              <li>• Logo Animation</li>
-              <li>• Motion Graphics</li>
-              <li>• Context Motion</li>
+              <li>• Music Licensing (commercial rights) — 300 – 1.000 DKK</li>
+              <li>• Social Media Cuts (vertical versions 15-30 sec) — 1.250 DKK per piece</li>
+              <li>• Sound Design Editing Video — 3.000 DKK</li>
             </ul>
           </div>
         </div>
-      
+      </div>
     
     
 
 <!-- 4. MOTION & ANIMATION ADD-ONS -->
       <div class="flex flex-col gap-4">
-        <h3 class="text-2xl font-extrabold mb-2 text-gray-800 border-b-2 border-purple-500 pb-2">5. MOTION & ANIMATION ADD-ONS</h3>
+        <h3 class="text-2xl font-extrabold mb-2 text-gray-800 border-b-2 border-purple-500 pb-2">5. MOTION & ANIMATION</h3>
         <div class="space-y-4">
           
           
@@ -524,40 +554,47 @@ Let’s create something similar for you.
                 <p class="text-2sm mb-2">Animated intro/outro with sound design.</p>
               </div>
           </div>
-        </div>
 
-        <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
             <h4 class="font-bold text-lg">Motion Graphics Basic — 1,800 DKK</h4>
               <div class="ml-0 mt-2"> 
                 <p class="text-2sm mb-2">Animated titles, lower thirds and graphic elements.</p>
               </div>
           </div>
-        </div>
 
-        <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
             <h4 class="font-bold text-lg">Context Motion Graphics — 2,500–4,000 DKK</h4>
               <div class="ml-0 mt-2"> 
                 <p class="text-2sm mb-2">Animated icons, objects and visual elements added to support storytelling.</p>
               </div>
           </div>
-        </div>
         
-        <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
             <h4 class="font-bold text-lg">Social Motion Upgrade — 3,500 DKK</h4>
               <div class="ml-0 mt-2"> 
                 <p class="text-2sm mb-2">Kinetic subtitles, animated keywords and dynamic graphic accents.</p>
               </div>
           </div>
+
+          <!-- Add-ons блок -->
+          <div class="mt-4 p-4 bg-gray-100 rounded-lg border-l-4 border-purple-500">
+            <p class="text-xs font-bold uppercase text-gray-500 mb-2">Add-ons:</p>
+            <ul class="text-sm space-y-1 text-gray-700">
+              <li>• Custom Vector Illustrations — 1.000 DKK per element</li>
+              <li>• Lottie Files for Web (light animation) — 2.000 DKK</li>
+              <li>• Multilingual Versions (adaptation of the text into other languages) — 500 DKK</li>
+            </ul>
+          </div>
         </div>
       </div>
 </section>
 
+<!-- Book контейнер -->
 <div class="container mx-auto px-4 py-10 text-center">
     <p class="text-xl mb-6">
       Choose your package and secure your date.
     </p>
-    <a href="calendar.html"
-      class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">
+    <a href="calendar.html" class="btn-nordic px-6 py-3 rounded-full shadow-sm">
       Book
     </a>
   </div>
@@ -691,8 +728,7 @@ Let’s create something similar for you.
   <div class="container mx-auto px-4">
     <h2 class="text-xl font-bold mb-6">Have an idea in mind? Let’s talk.
     </h2>
-    <a href="calendar.html"
-      class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">
+    <a href="calendar.html" class="btn-nordic px-6 py-3 rounded-full shadow-sm">
       Book a photo session
     </a>
   </div>
