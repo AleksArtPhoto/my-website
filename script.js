@@ -144,41 +144,54 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const pToggle = document.getElementById('portfolio-toggle-container');
     const pBg = document.getElementById('portfolio-toggle-bg');
-    const textPhoto = document.getElementById('text-photo');
-    const textVideo = document.getElementById('text-video');
+    
+    const btnPhoto = document.getElementById('btn-photo');
+    const btnRetouch = document.getElementById('btn-retouch');
+    const btnVideo = document.getElementById('btn-video');
     
     const photoContent = document.getElementById('photo-portfolio');
+    const retouchContent = document.getElementById('retouch-portfolio');
     const videoContent = document.getElementById('video-portfolio');
 
     if (!pToggle) return;
 
-    let isVideoMode = false;
+    let state = 0; // 0: Photo, 1: Retouch, 2: Video
 
     pToggle.addEventListener('click', () => {
-        isVideoMode = !isVideoMode;
+        state = (state + 1) % 3; // Цикличное переключение 0 -> 1 -> 2 -> 0
 
-        if (isVideoMode) {
-            // Переключаем на VIDEO (Nordic Blue)
-            pBg.style.left = '138px';
-            pBg.style.background = '#2c3e50';
-            pBg.style.border = '1px solid #2c3e50';
-            
-            textVideo.style.color = '#ffffff';
-            textPhoto.style.color = '#94a3b8';
-            
-            photoContent.classList.add('hidden');
-            videoContent.classList.remove('hidden');
-        } else {
-            // Переключаем на PHOTO (Stone Gray)
+        // Сброс всех блоков
+        photoContent.classList.add('hidden');
+        retouchContent.classList.add('hidden');
+        videoContent.classList.add('hidden');
+        
+        btnPhoto.style.color = '#94a3b8';
+        btnRetouch.style.color = '#94a3b8';
+        btnVideo.style.color = '#94a3b8';
+
+        if (state === 0) {
+            // PHOTO (Silver/Stone)
             pBg.style.left = '4px';
             pBg.style.background = '#e2e8f0';
             pBg.style.border = '1px solid #cbd5e1';
-            
-            textPhoto.style.color = '#1e293b';
-            textVideo.style.color = '#94a3b8';
-            
-            videoContent.classList.add('hidden');
+            btnPhoto.style.color = '#1e293b';
             photoContent.classList.remove('hidden');
+        } 
+        else if (state === 1) {
+            // RETOUCH (Steel Blue - Промежуточный)
+            pBg.style.left = '102px'; // Центр
+            pBg.style.background = '#5a7d9a'; // Матовый серо-синий
+            pBg.style.border = '1px solid #5a7d9a';
+            btnRetouch.style.color = '#ffffff';
+            retouchContent.classList.remove('hidden');
+        } 
+        else if (state === 2) {
+            // VIDEO (Deep Nordic Blue)
+            pBg.style.left = '200px'; // Право
+            pBg.style.background = '#2c3e50';
+            pBg.style.border = '1px solid #2c3e50';
+            btnVideo.style.color = '#ffffff';
+            videoContent.classList.remove('hidden');
         }
     });
 });
