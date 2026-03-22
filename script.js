@@ -158,38 +158,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let state = 0; // 0: Photo, 1: Retouch, 2: Video
 
     pToggle.addEventListener('click', () => {
-        state = (state + 1) % 3; // Цикличное переключение 0 -> 1 -> 2 -> 0
+        state = (state + 1) % 3;
 
-        // Сброс всех блоков
-        photoContent.classList.add('hidden');
-        retouchContent.classList.add('hidden');
-        videoContent.classList.add('hidden');
-        
-        btnPhoto.style.color = '#94a3b8';
-        btnRetouch.style.color = '#94a3b8';
-        btnVideo.style.color = '#94a3b8';
+        // Скрываем всё
+        [photoContent, retouchContent, videoContent].forEach(el => el.classList.add('hidden'));
+        [btnPhoto, btnRetouch, btnVideo].forEach(btn => btn.style.color = '#94a3b8');
 
         if (state === 0) {
-            // PHOTO (Silver/Stone)
             pBg.style.left = '4px';
             pBg.style.background = '#e2e8f0';
-            pBg.style.border = '1px solid #cbd5e1';
             btnPhoto.style.color = '#1e293b';
             photoContent.classList.remove('hidden');
         } 
         else if (state === 1) {
-            // RETOUCH (Steel Blue - Промежуточный)
-            pBg.style.left = '102px'; // Центр
-            pBg.style.background = '#5a7d9a'; // Матовый серо-синий
-            pBg.style.border = '1px solid #5a7d9a';
+            pBg.style.left = '34%'; // Центр
+            pBg.style.background = '#5a7d9a';
             btnRetouch.style.color = '#ffffff';
             retouchContent.classList.remove('hidden');
         } 
         else if (state === 2) {
-            // VIDEO (Deep Nordic Blue)
-            pBg.style.left = '200px'; // Право
+            pBg.style.left = '67%'; // Право
             pBg.style.background = '#2c3e50';
-            pBg.style.border = '1px solid #2c3e50';
             btnVideo.style.color = '#ffffff';
             videoContent.classList.remove('hidden');
         }
