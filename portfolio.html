@@ -46,17 +46,17 @@
   
 <!-- Контейнер переключателя Портфолио -->
 <div class="flex justify-center py-10 bg-gray-50 px-4">
-  <!-- Ограничили макс. ширину до 350px, чтобы не растягивался на весь экран -->
-  <div class="relative bg-gray-200 p-1 rounded-full flex items-center w-full max-w-[350px] h-12 shadow-inner cursor-pointer overflow-hidden">
+  <!-- Фиксированная ширина 280px — золотой стандарт для такого UI -->
+  <div id="portfolio-toggle-container" class="relative bg-gray-200 p-1 rounded-full flex items-center w-[280px] h-11 shadow-inner cursor-pointer overflow-hidden">
     
-    <!-- Плавающая подложка (теперь управляется через JS точнее) -->
-    <div id="portfolio-toggle-bg" class="absolute h-10 rounded-full shadow-md transition-all duration-300 ease-in-out" 
-         style="width: 110px; left: 4px; background: #e2e8f0; border: 1px solid #cbd5e1;"></div>
+    <!-- Плавающая подложка (ровно 1/3 ширины минус отступы) -->
+    <div id="portfolio-toggle-bg" class="absolute h-9 rounded-full shadow-sm transition-all duration-300 ease-in-out" 
+         style="width: 90px; left: 4px; background: #e2e8f0; border: 1px solid #cbd5e1;"></div>
     
-    <!-- Кнопки с ID для прямого клика -->
-    <div id="btn-photo" class="relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #1e293b;">Photo</div>
-    <div id="btn-retouch" class="relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #94a3b8;">Retouch</div>
-    <div id="btn-video" class="relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #94a3b8;">Video</div>
+    <!-- Кнопки -->
+    <div id="btn-photo" class="relative z-10 flex-1 text-center text-[10px] tracking-widest font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #1e293b;">Photo</div>
+    <div id="btn-retouch" class="relative z-10 flex-1 text-center text-[10px] tracking-widest font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #94a3b8;">Retouch</div>
+    <div id="btn-video" class="relative z-10 flex-1 text-center text-[10px] tracking-widest font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #94a3b8;">Video</div>
   </div>
 </div>
 

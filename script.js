@@ -143,47 +143,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const bg = document.getElementById('portfolio-toggle-bg');
-    const buttons = {
+    const btns = {
         photo: document.getElementById('btn-photo'),
         retouch: document.getElementById('btn-retouch'),
         video: document.getElementById('btn-video')
     };
-    const contents = {
+    const sectors = {
         photo: document.getElementById('photo-portfolio'),
         retouch: document.getElementById('retouch-portfolio'),
         video: document.getElementById('video-portfolio')
     };
 
-    if (!buttons.photo) return;
+    if (!btns.photo) return;
 
-    function updateSlider(state) {
-        // 1. Скрываем все блоки и сбрасываем текст
-        Object.values(contents).forEach(el => el.classList.add('hidden'));
-        Object.values(buttons).forEach(btn => btn.style.color = '#94a3b8');
+    function switchTo(mode) {
+        // Скрываем контент и сбрасываем цвета текста
+        Object.values(sectors).forEach(s => s.classList.add('hidden'));
+        Object.values(btns).forEach(b => b.style.color = '#94a3b8');
 
-        // 2. Логика позиций (точный расчет в пикселях для контейнера 350px)
-        if (state === 'photo') {
-            bg.style.left = '4px';
+        // Позиционирование подложки в контейнере 280px
+        if (mode === 'photo') {
+            bg.style.left = '4px'; 
             bg.style.background = '#e2e8f0';
-            buttons.photo.style.color = '#1e293b';
-            contents.photo.classList.remove('hidden');
-        } else if (state === 'retouch') {
-            // Расчет центра: (350 / 2) - (110 / 2) = 120px
-            bg.style.left = 'calc(50% - 55px)'; 
+            btns.photo.style.color = '#1e293b';
+            sectors.photo.classList.remove('hidden');
+        } else if (mode === 'retouch') {
+            bg.style.left = '95px'; // Ровно по центру
             bg.style.background = '#5a7d9a';
-            buttons.retouch.style.color = '#ffffff';
-            contents.retouch.classList.remove('hidden');
-        } else if (state === 'video') {
-            // Расчет конца: 350 - 110 - 4 = 236px
-            bg.style.left = 'calc(100% - 114px)'; 
+            btns.retouch.style.color = '#ffffff';
+            sectors.retouch.classList.remove('hidden');
+        } else if (mode === 'video') {
+            bg.style.left = '186px'; // Ровно до правого края (280 - 90 - 4)
             bg.style.background = '#2c3e50';
-            buttons.video.style.color = '#ffffff';
-            contents.video.classList.remove('hidden');
+            btns.video.style.color = '#ffffff';
+            sectors.video.classList.remove('hidden');
         }
     }
 
-    // Добавляем клик на каждую кнопку отдельно
-    buttons.photo.onclick = () => updateSlider('photo');
-    buttons.retouch.onclick = () => updateSlider('retouch');
-    buttons.video.onclick = () => updateSlider('video');
+    // Привязываем клики к конкретным кнопкам
+    btns.photo.onclick = () => switchTo('photo');
+    btns.retouch.onclick = () => switchTo('retouch');
+    btns.video.onclick = () => switchTo('video');
 });
