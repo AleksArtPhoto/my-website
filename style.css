@@ -289,3 +289,6 @@ PORTFOLIO
   transition: color 0.3s ease;
   user-select: none;
 }
+html {
+  scrollbar-gutter: stable;
+}
