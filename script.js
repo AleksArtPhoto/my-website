@@ -157,30 +157,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!btns.photo) return;
 
     function switchTo(mode) {
-        // Скрываем контент и сбрасываем цвета текста
+        // Прячем всё и сбрасываем цвета
         Object.values(sectors).forEach(s => s.classList.add('hidden'));
         Object.values(btns).forEach(b => b.style.color = '#94a3b8');
 
-        // Позиционирование подложки в контейнере 280px
         if (mode === 'photo') {
             bg.style.left = '4px'; 
             bg.style.background = '#e2e8f0';
+            bg.style.border = '1px solid #cbd5e1';
             btns.photo.style.color = '#1e293b';
             sectors.photo.classList.remove('hidden');
         } else if (mode === 'retouch') {
-            bg.style.left = '95px'; // Ровно по центру
+            // Центр: (320 - 104) / 2 = 108px
+            bg.style.left = '108px'; 
             bg.style.background = '#5a7d9a';
+            bg.style.border = '1px solid #5a7d9a';
             btns.retouch.style.color = '#ffffff';
             sectors.retouch.classList.remove('hidden');
         } else if (mode === 'video') {
-            bg.style.left = '186px'; // Ровно до правого края (280 - 90 - 4)
+            // Край: 320 - 104 - 4 = 212px
+            bg.style.left = '212px'; 
             bg.style.background = '#2c3e50';
+            bg.style.border = '1px solid #2c3e50';
             btns.video.style.color = '#ffffff';
             sectors.video.classList.remove('hidden');
         }
     }
 
-    // Привязываем клики к конкретным кнопкам
     btns.photo.onclick = () => switchTo('photo');
     btns.retouch.onclick = () => switchTo('retouch');
     btns.video.onclick = () => switchTo('video');
