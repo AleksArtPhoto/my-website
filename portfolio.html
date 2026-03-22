@@ -43,76 +43,34 @@
   </div>
 </header>
 
-<div class="container mx-auto px-4 py-10 text-center">
-    <p class="text-xl mb-6">
-      Are you impressed by these images?
-      Yours can look just as good!
-    </p>
-    <a href="calendar.html" class="btn-nordic px-6 py-3 rounded-full shadow-sm">
-      Book
-    </a>
-  </div>
   
-<!-- PORTFOLIO SECTION -->
-<section class="py-16 bg-gray-50">
+<!-- Контейнер переключателя Портфолио -->
+<div class="flex justify-center py-10 bg-gray-50">
+  <div id="portfolio-toggle-container" class="relative bg-gray-200 p-1 rounded-full flex items-center w-72 h-12 shadow-inner cursor-pointer overflow-hidden">
+    <!-- Плавающая подложка (по умолчанию Silver) -->
+    <div id="portfolio-toggle-bg" class="absolute h-10 rounded-full shadow-md transition-all duration-300 ease-in-out" 
+         style="width: 138px; left: 4px; background: #e2e8f0; border: 1px solid #cbd5e1;"></div>
+    
+    <div id="text-photo" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300" style="color: #1e293b;">Photography</div>
+    <div id="text-video" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300" style="color: #94a3b8;">Videography</div>
+  </div>
+</div>
+
+<!-- SECTION PORTFOLIO -->
+<section class="py-10 bg-gray-50">
   <div class="container mx-auto px-4">
-    <!-- ИСПРАВЛЕННАЯ СЕТКА: 1 на мобильном, 2 на планшете, 3 на ПК -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- КАРТОЧКА (Повторите эту структуру для всех 9 блоков) -->
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden">
-          <a href="portraits.html">
-            <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden">
-          <a href="portraits.html">
-            <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden">
-          <a href="portraits.html">
-            <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden">
-          <a href="portraits.html">
-            <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden">
-          <a href="portraits.html">
-            <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Повторите блок выше еще .... раз -->
-
+    
+    <!-- 1. ФОТО ПОРТФОЛИО (Ваши 9 папок) -->
+    <div id="photo-portfolio" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <!-- Сюда вставьте ваши 9 карточек с папками фото -->
     </div>
+
+    <!-- 2. ВИДЕО ПОРТФОЛИО (Изначально скрыто) -->
+    <div id="video-portfolio" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <!-- Сюда пойдут папки с видео-работами -->
+       <p class="col-span-full text-center py-20 text-gray-500 italic">Video portfolio coming soon...</p>
+    </div>
+
   </div>
 </section>
   

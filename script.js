@@ -140,3 +140,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pToggle = document.getElementById('portfolio-toggle-container');
+    const pBg = document.getElementById('portfolio-toggle-bg');
+    const textPhoto = document.getElementById('text-photo');
+    const textVideo = document.getElementById('text-video');
+    
+    const photoContent = document.getElementById('photo-portfolio');
+    const videoContent = document.getElementById('video-portfolio');
+
+    if (!pToggle) return;
+
+    let isVideoMode = false;
+
+    pToggle.addEventListener('click', () => {
+        isVideoMode = !isVideoMode;
+
+        if (isVideoMode) {
+            // Переключаем на VIDEO (Nordic Blue)
+            pBg.style.left = '138px';
+            pBg.style.background = '#2c3e50';
+            pBg.style.border = '1px solid #2c3e50';
+            
+            textVideo.style.color = '#ffffff';
+            textPhoto.style.color = '#94a3b8';
+            
+            photoContent.classList.add('hidden');
+            videoContent.classList.remove('hidden');
+        } else {
+            // Переключаем на PHOTO (Stone Gray)
+            pBg.style.left = '4px';
+            pBg.style.background = '#e2e8f0';
+            pBg.style.border = '1px solid #cbd5e1';
+            
+            textPhoto.style.color = '#1e293b';
+            textVideo.style.color = '#94a3b8';
+            
+            videoContent.classList.add('hidden');
+            photoContent.classList.remove('hidden');
+        }
+    });
+});
