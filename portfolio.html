@@ -24,7 +24,7 @@
     <!-- Навигация для ПК (скрыта на мобильных) -->
     <nav class="hidden md:flex space-x-6">
       <a href="index.html" class="hover:text-blue-600 transition">Home</a>
-      <a href="#services" class="hover:text-blue-600 transition">Services</a>
+      <a href="index.html#services" class="hover:text-blue-600 transition">Services</a>
       <a href="book.html" class="hover:text-blue-600 transition">Book</a>
       <a href="index.html#contact" class="hover:text-blue-600 transition">Contact</a>
     </nav>
@@ -37,10 +37,10 @@
     </button>
   </div>
 
-  <!-- Выпадающее Мобильное Меню -->
-  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col p-6 space-y-4 md:hidden" style="z-index: 99;">
+    <!-- Выпадающее Мобильное Меню -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col p-6 space-y-4 md:hidden" style="z-index: 1000;">
     <a href="index.html" class="text-lg font-bold py-2 border-b border-gray-50">Home</a>
-    <a href="#services" class="text-lg font-bold py-2 border-b border-gray-50">Services</a>
+    <a href="index.html#services" class="text-lg font-bold py-2 border-b border-gray-50">Services</a>
     <a href="book.html" class="text-lg font-bold py-2 border-b border-gray-50">Book</a>
     <a href="index.html#contact" class="text-lg font-bold py-2 border-b border-gray-50">Contact</a>
   </div>
@@ -49,12 +49,14 @@
   
 <!-- 9 Portfolio Blocks -->
   <section id="services" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-3 gap-6">
-        <button class="bg-white p-6 rounded-lg shadow group transform transition duration-300 hover:scale-105">
-            <div class="relative rounded-lg overflow-hidden">
-              <a href="portraits.html"><img src="test_photo.jpg" alt="Portrait" class="rounded-lg w-full h-auto">
-          <h3 class="absolute top-2 left-2 text-white text-xl font-semibold opacity-60 group-hover:opacity-100 group-hover:font-bold transition">Portraits</h3></a></div>
+    <div class="bg-white p-6 rounded-lg shadow group transform transition duration-300 hover:scale-105">
+    <div class="relative rounded-lg overflow-hidden">
+      <a href="portraits.html">
+        <img src="test_photo.jpg" alt="Portrait" class="rounded-lg w-full h-auto">
+        <h3 class="absolute top-2 left-2 text-white text-xl font-semibold opacity-60 group-hover:opacity-100 group-hover:font-bold transition">Portraits</h3>
+      </a>
+    </div>
+</div>
         <button class="bg-white p-6 rounded-lg shadow group transform transition duration-300 hover:scale-105">
             <div class="relative rounded-lg overflow-hidden">
               <a href="index.html"><img src="not_available.jpg" alt="Portrait" class="rounded-lg w-full h-auto">
