@@ -169,14 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
             sectors.photo.classList.remove('hidden');
         } else if (mode === 'retouch') {
             // Центр: (320 - 104) / 2 = 108px
-            bg.style.left = '108px'; 
+            bg.style.left = '127px'; 
             bg.style.background = '#5a7d9a';
             bg.style.border = '1px solid #5a7d9a';
             btns.retouch.style.color = '#ffffff';
             sectors.retouch.classList.remove('hidden');
         } else if (mode === 'video') {
             // Край: 320 - 104 - 4 = 212px
-            bg.style.left = '212px'; 
+            bg.style.left = '254px'; 
             bg.style.background = '#2c3e50';
             bg.style.border = '1px solid #2c3e50';
             btns.video.style.color = '#ffffff';
