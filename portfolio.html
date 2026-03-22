@@ -7,20 +7,41 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
 
-</head>
-<body class="bg-white text-gray-800 font-sans">
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold">Aleks Art Photo</div>
-      <img src="logo1.png" width="50" height="50" alt="logo" style="position: relative; right: 450px;">
-      <nav class="space-x-4">
-        <a href="index.html" class="hover:text-blue-600">Home</a>
-        <a href="services.html" class="hover:text-blue-600">Services</a>
-        <a href="calendar.html" class="hover:text-blue-600">Calendar</a>
-        <a href="index.html#contact" class="hover:text-blue-600">Contacts</a>
-      </nav>
+  <!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-[100]">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+    
+    <!-- Лого и Название -->
+    <div class="flex items-center gap-3">
+      <!-- Убедитесь, что папка logo лежит в корне сайта -->
+      <img src="logo1.png" width="40" height="40" alt="logo" class="object-contain">
+      <div class="text-xl md:text-2xl font-bold">Aleks Art Photo</div>
     </div>
-  </header>
+
+    <!-- Навигация для ПК (скрыта на мобильных) -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+      <a href="#services" class="hover:text-blue-600 transition">Services</a>
+      <a href="book.html" class="hover:text-blue-600 transition">Book</a>
+      <a href="index.html#contact" class="hover:text-blue-600 transition">Contact</a>
+    </nav>
+
+    <!-- Кнопка Бургер (видна только на мобильных) -->
+    <button id="mobile-menu-btn" class="md:hidden block p-2 text-gray-800 focus:outline-none bg-gray-100 rounded-md" style="z-index: 110;">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Выпадающее Мобильное Меню -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 flex-col p-6 space-y-4 md:hidden" style="z-index: 99;">
+    <a href="index.html" class="text-lg font-bold py-2 border-b border-gray-50">Home</a>
+    <a href="#services" class="text-lg font-bold py-2 border-b border-gray-50">Services</a>
+    <a href="book.html" class="text-lg font-bold py-2 border-b border-gray-50">Book</a>
+    <a href="index.html#contact" class="text-lg font-bold py-2 border-b border-gray-50">Contact</a>
+  </div>
+</header>
 
   
 <!-- 9 Portfolio Blocks -->
