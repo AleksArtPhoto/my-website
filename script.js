@@ -142,45 +142,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const pToggle = document.getElementById('portfolio-toggle-container');
-    const pBg = document.getElementById('portfolio-toggle-bg');
-    
-    const btnPhoto = document.getElementById('btn-photo');
-    const btnRetouch = document.getElementById('btn-retouch');
-    const btnVideo = document.getElementById('btn-video');
-    
-    const photoContent = document.getElementById('photo-portfolio');
-    const retouchContent = document.getElementById('retouch-portfolio');
-    const videoContent = document.getElementById('video-portfolio');
+    const bg = document.getElementById('portfolio-toggle-bg');
+    const buttons = {
+        photo: document.getElementById('btn-photo'),
+        retouch: document.getElementById('btn-retouch'),
+        video: document.getElementById('btn-video')
+    };
+    const contents = {
+        photo: document.getElementById('photo-portfolio'),
+        retouch: document.getElementById('retouch-portfolio'),
+        video: document.getElementById('video-portfolio')
+    };
 
-    if (!pToggle) return;
+    if (!buttons.photo) return;
 
-    let state = 0; // 0: Photo, 1: Retouch, 2: Video
+    function updateSlider(state) {
+        // 1. Скрываем все блоки и сбрасываем текст
+        Object.values(contents).forEach(el => el.classList.add('hidden'));
+        Object.values(buttons).forEach(btn => btn.style.color = '#94a3b8');
 
-    pToggle.addEventListener('click', () => {
-        state = (state + 1) % 3;
-
-        // Скрываем всё
-        [photoContent, retouchContent, videoContent].forEach(el => el.classList.add('hidden'));
-        [btnPhoto, btnRetouch, btnVideo].forEach(btn => btn.style.color = '#94a3b8');
-
-        if (state === 0) {
-            pBg.style.left = '4px';
-            pBg.style.background = '#e2e8f0';
-            btnPhoto.style.color = '#1e293b';
-            photoContent.classList.remove('hidden');
-        } 
-        else if (state === 1) {
-            pBg.style.left = '34%'; // Центр
-            pBg.style.background = '#5a7d9a';
-            btnRetouch.style.color = '#ffffff';
-            retouchContent.classList.remove('hidden');
-        } 
-        else if (state === 2) {
-            pBg.style.left = '67%'; // Право
-            pBg.style.background = '#2c3e50';
-            btnVideo.style.color = '#ffffff';
-            videoContent.classList.remove('hidden');
+        // 2. Логика позиций (точный расчет в пикселях для контейнера 350px)
+        if (state === 'photo') {
+            bg.style.left = '4px';
+            bg.style.background = '#e2e8f0';
+            buttons.photo.style.color = '#1e293b';
+            contents.photo.classList.remove('hidden');
+        } else if (state === 'retouch') {
+            // Расчет центра: (350 / 2) - (110 / 2) = 120px
+            bg.style.left = 'calc(50% - 55px)'; 
+            bg.style.background = '#5a7d9a';
+            buttons.retouch.style.color = '#ffffff';
+            contents.retouch.classList.remove('hidden');
+        } else if (state === 'video') {
+            // Расчет конца: 350 - 110 - 4 = 236px
+            bg.style.left = 'calc(100% - 114px)'; 
+            bg.style.background = '#2c3e50';
+            buttons.video.style.color = '#ffffff';
+            contents.video.classList.remove('hidden');
         }
-    });
+    }
+
+    // Добавляем клик на каждую кнопку отдельно
+    buttons.photo.onclick = () => updateSlider('photo');
+    buttons.retouch.onclick = () => updateSlider('retouch');
+    buttons.video.onclick = () => updateSlider('video');
 });

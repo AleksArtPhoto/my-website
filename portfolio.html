@@ -46,17 +46,17 @@
   
 <!-- Контейнер переключателя Портфолио -->
 <div class="flex justify-center py-10 bg-gray-50 px-4">
-  <!-- Убрал жесткое w-[300px], добавил max-w-sm для мобильных -->
-  <div id="portfolio-toggle-container" class="relative bg-gray-200 p-1 rounded-full flex items-center w-full max-w-[350px] h-12 shadow-inner cursor-pointer overflow-hidden">
+  <!-- Ограничили макс. ширину до 350px, чтобы не растягивался на весь экран -->
+  <div class="relative bg-gray-200 p-1 rounded-full flex items-center w-full max-w-[350px] h-12 shadow-inner cursor-pointer overflow-hidden">
     
-    <!-- Плавающая подложка -->
+    <!-- Плавающая подложка (теперь управляется через JS точнее) -->
     <div id="portfolio-toggle-bg" class="absolute h-10 rounded-full shadow-md transition-all duration-300 ease-in-out" 
-         style="width: 32%; left: 4px; background: #e2e8f0; border: 1px solid #cbd5e1;"></div>
+         style="width: 110px; left: 4px; background: #e2e8f0; border: 1px solid #cbd5e1;"></div>
     
-    <!-- Кнопки -->
-    <div id="btn-photo" class="relative z-10 flex-1 text-center text-[10px] sm:text-xs font-bold transition-colors duration-300 uppercase tracking-tighter" style="color: #1e293b;">Photo</div>
-    <div id="btn-retouch" class="relative z-10 flex-1 text-center text-[10px] sm:text-xs font-bold transition-colors duration-300 uppercase tracking-tighter" style="color: #94a3b8;">Retouch</div>
-    <div id="btn-video" class="relative z-10 flex-1 text-center text-[10px] sm:text-xs font-bold transition-colors duration-300 uppercase tracking-tighter" style="color: #94a3b8;">Video</div>
+    <!-- Кнопки с ID для прямого клика -->
+    <div id="btn-photo" class="relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #1e293b;">Photo</div>
+    <div id="btn-retouch" class="relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #94a3b8;">Retouch</div>
+    <div id="btn-video" class="relative z-10 flex-1 text-center text-[11px] font-bold transition-colors duration-300 uppercase cursor-pointer" style="color: #94a3b8;">Video</div>
   </div>
 </div>
 
@@ -64,49 +64,30 @@
 <section class="py-10 bg-gray-50 min-h-[60vh]">
   <div class="container mx-auto px-4">
     
-    <!-- 1. ФОТО -->
+    <!-- Контейнеры (Photo / Retouch / Video) -->
     <div id="photo-portfolio" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden h-64">
-          <a href="portraits.html">
-            <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
-          </a>
-        </div>
-      </div>
-      <!-- Тут могут быть остальные 8 карточек Photo -->
+       <!-- Карточка с w-full h-full -->
+       <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
+          <div class="relative rounded-lg overflow-hidden w-full h-full">
+            <a href="portraits.html">
+              <img src="test_photo.jpg" alt="Portrait" class="w-full h-full object-contain bg-gray-100">
+              <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
+              <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Portraits</h3>
+            </a>
+          </div>
+       </div>
     </div>
 
-    <!-- 2. РЕТУШЬ -->
     <div id="retouch-portfolio" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden h-64">
-          <a href="#">
-            <img src="not_available.jpg" alt="Retouch" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">High-End Retouch</h3>
-          </a>
-        </div>
-      </div>
-      <p class="col-span-full text-center py-10 text-gray-400 italic">More retouching examples coming soon...</p>
+       <!-- Сюда карточки ретуши -->
     </div>
 
-    <!-- 3. ВИДЕО -->
     <div id="video-portfolio" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded-lg shadow-md group transform transition duration-300 hover:scale-105">
-        <div class="relative rounded-lg overflow-hidden h-64">
-          <a href="#">
-            <img src="not_available.jpg" alt="Video" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition"></div>
-            <h3 class="absolute top-4 left-4 text-white text-xl font-bold">Video Production</h3>
-          </a>
-        </div>
-      </div>
+       <!-- Сюда карточки видео -->
     </div>
-
   </div>
 </section>
+
   
 
   <footer class="bg-white py-6 text-center text-sm text-gray-500">
