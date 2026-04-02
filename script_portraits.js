@@ -10,11 +10,11 @@ let currentIndex = 0;
 // Открытие модального окна
 const openModal = (index) => {
   currentIndex = index;
-  modal.classList.remove('hidden');
-  modal.classList.add('flex'); // Добавляем flex для центрирования
-  document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
-  modalImg.src = images[currentIndex].src;
+  modal.src = images[currentIndex].src; // Сначала подменяем путь
+  modal.classList.remove('hidden');    // Затем показываем
+  document.body.style.overflow = 'hidden'; 
 };
+
 
 // Закрытие модального окна
 const closeModal = () => {
