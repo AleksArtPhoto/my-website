@@ -68,4 +68,31 @@ document.addEventListener('keydown', (e) => {
 
 // Защита изображения в модальном окне
 modalImg.addEventListener('contextmenu', (e) => e.preventDefault());
+
+/* Контейнер для фото в сетке */
+#gallery > div {
+    background-color: #f3f4f6; /* Светло-серый фон для пустых мест */
+    transition: transform 0.3s ease;
+}
+
+#gallery > div:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* Сами изображения */
+.album-img {
+    display: block;
+    /* Убираем возможные зазоры */
+    margin: auto; 
+}
+
+/* Настройка модального окна для центрирования любого типа фото */
+#modalImg {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-contain: contain;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
 modalImg.setAttribute('draggable', 'false');
