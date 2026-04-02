@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photo Album</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<script defer src="script_portraits.js"></script>
+</head>
+
+<!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-40"> 
+<div class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+<!-- Лого -->
+   <div class="flex items-center gap-3">
+      <img src="logo1.png" width="40" height="40" alt="logo" class="object-contain">
+      <div class="text-xl md:text-2xl font-bold">Aleks Art Photo</div>
+   </div>
+
+   <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+      <a href="index.html#services" class="hover:text-blue-600 transition">Services</a>
+      <a href="book.html" class="hover:text-blue-600 transition">Book</a>
+      <a href="index.html#contact" class="hover:text-blue-600 transition">Contact</a>
+   </nav>
+
+   <button id="mobile-menu-btn" class="md:hidden block p-2 text-gray-800 focus:outline-none bg-gray-100 rounded-md">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+   </button>
+</div>
+
+<!-- МОБИЛЬНОЕ МЕНЮ: Добавлен фиксированный z-index -->
+<div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 flex-col p-6 space-y-4 md:hidden" style="z-index: 10000; position: absolute;">
+   <a href="index.html" class="text-lg font-bold py-2 border-b border-gray-50">Home</a>
+   <a href="index.html#services" class="text-lg font-bold py-2 border-b border-gray-50">Services</a>
+   <a href="book.html" class="text-lg font-bold py-2 border-b border-gray-50">Book</a>
+   <a href="index.html#contact" class="text-lg font-bold py-2">Contact</a>
+</div>
+</header>
+
+
+<!-- Фотоальбом -->
+<main class="container mx-auto px-4 py-8">
+  <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <!-- Сгенерированные 24 изображения -->
+     
+      <div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/1.jpg" alt="photo1" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/2.jpg" alt="photo2" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/3.jpg" alt="photo3" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/4.jpg" alt="photo4" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/5.jpg" alt="photo5" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/6.jpg" alt="photo6" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/7.jpg" alt="photo7" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/8.jpg" alt="photo8" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/9.jpg" alt="photo9" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/10.jpg" alt="photo10" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/11.jpg" alt="photo11" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/12.jpg" alt="photo12" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/13.jpg" alt="photo13" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/14.jpg" alt="photo14" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/15.jpg" alt="photo15" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/16.jpg" alt="photo16" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/17.jpg" alt="photo17" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/18.jpg" alt="photo18" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/19.jpg" alt="photo19" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/20.jpg" alt="photo20" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/21.jpg" alt="photo21" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/22.jpg" alt="photo22" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/23.jpg" alt="photo23" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/24.jpg" alt="photo24" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/25.jpg" alt="photo25" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/26.jpg" alt="photo26" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/27.jpg" alt="photo27" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/28.jpg" alt="photo28" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/29.jpg" alt="photo29" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/30.jpg" alt="photo30" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/31.jpg" alt="photo31" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/32.jpg" alt="photo32" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/33.jpg" alt="photo33" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/34.jpg" alt="photo34" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/35.jpg" alt="photo35" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/36.jpg" alt="photo36" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/37.jpg" alt="photo37" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/38.jpg" alt="photo38" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/39.jpg" alt="photo39" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/40.jpg" alt="photo40" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/41.jpg" alt="photo41" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/42.jpg" alt="photo42" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/43.jpg" alt="photo43" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/44.jpg" alt="photo44" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/45.jpg" alt="photo45" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/46.jpg" alt="photo46" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/47.jpg" alt="photo47" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/48.jpg" alt="photo48" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/49.jpg" alt="photo49" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/50.jpg" alt="photo50" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/51.jpg" alt="photo51" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/52.jpg" alt="photo52" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/53.jpg" alt="photo53" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/54.jpg" alt="photo54" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/55.jpg" alt="photo55" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/56.jpg" alt="photo56" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/57.jpg" alt="photo57" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/58.jpg" alt="photo58" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/59.jpg" alt="photo59" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/60.jpg" alt="photo60" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/61.jpg" alt="photo61" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="event photography/62.jpg" alt="photo62" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+
+     
+   </div>
+</main>
+
+  <!-- Модальное окно (Должно быть здесь!) -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-[9999] bg-black bg-opacity-95 modal-overlay">
+    <!-- Кнопки управления -->
+    <button id="closeBtn" class="absolute top-6 right-8 text-white text-5xl font-light hover:text-gray-300 transition z-[10001]">&times;</button>
+    <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-6xl font-light hover:text-gray-400 transition z-[10001]">❮</button>
+    <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-6xl font-light hover:text-gray-400 transition z-[10001]">❯</button>
+
+    <!-- Контейнер для фото -->
+    <div class="flex items-center justify-center w-full h-full p-4">
+      <img id="modalImg" src="" alt="Full View" class="max-w-full max-h-full object-contain shadow-2xl">
+    </div>
+  </div>
+
+  <script src="script_portraits.js"></script>
+</body>
+</html>

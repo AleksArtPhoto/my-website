@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photo Album</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<script defer src="script_portraits.js"></script>
+</head>
+
+<!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-40"> 
+<div class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+<!-- Лого -->
+   <div class="flex items-center gap-3">
+      <img src="logo1.png" width="40" height="40" alt="logo" class="object-contain">
+      <div class="text-xl md:text-2xl font-bold">Aleks Art Photo</div>
+   </div>
+
+   <nav class="hidden md:flex space-x-6">
+      <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+      <a href="index.html#services" class="hover:text-blue-600 transition">Services</a>
+      <a href="book.html" class="hover:text-blue-600 transition">Book</a>
+      <a href="index.html#contact" class="hover:text-blue-600 transition">Contact</a>
+   </nav>
+
+   <button id="mobile-menu-btn" class="md:hidden block p-2 text-gray-800 focus:outline-none bg-gray-100 rounded-md">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+   </button>
+</div>
+
+<!-- МОБИЛЬНОЕ МЕНЮ: Добавлен фиксированный z-index -->
+<div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 flex-col p-6 space-y-4 md:hidden" style="z-index: 10000; position: absolute;">
+   <a href="index.html" class="text-lg font-bold py-2 border-b border-gray-50">Home</a>
+   <a href="index.html#services" class="text-lg font-bold py-2 border-b border-gray-50">Services</a>
+   <a href="book.html" class="text-lg font-bold py-2 border-b border-gray-50">Book</a>
+   <a href="index.html#contact" class="text-lg font-bold py-2">Contact</a>
+</div>
+</header>
+
+
+<!-- Фотоальбом -->
+<main class="container mx-auto px-4 py-8">
+  <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <!-- Сгенерированные 24 изображения -->
+     
+    <div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/1.jpg" alt="photo1" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/2.jpg" alt="photo2" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/3.jpg" alt="photo3" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/4.jpg" alt="photo4" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/5.jpg" alt="photo5" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/6.jpg" alt="photo6" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/7.jpg" alt="photo7" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/8.jpg" alt="photo8" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/9.jpg" alt="photo9" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/10.jpg" alt="photo10" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/11.jpg" alt="photo11" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/12.jpg" alt="photo12" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/13.jpg" alt="photo13" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/14.jpg" alt="photo14" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/15.jpg" alt="photo15" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/16.jpg" alt="photo16" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/17.jpg" alt="photo17" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/18.jpg" alt="photo18" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/19.jpg" alt="photo19" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/20.jpg" alt="photo20" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/21.jpg" alt="photo21" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/22.jpg" alt="photo22" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/23.jpg" alt="photo23" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/24.jpg" alt="photo24" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/25.jpg" alt="photo25" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/26.jpg" alt="photo26" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/27.jpg" alt="photo27" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/28.jpg" alt="photo28" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/29.jpg" alt="photo29" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/30.jpg" alt="photo30" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/31.jpg" alt="photo31" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/32.jpg" alt="photo32" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/33.jpg" alt="photo33" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/34.jpg" alt="photo34" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/35.jpg" alt="photo35" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/36.jpg" alt="photo36" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/37.jpg" alt="photo37" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/38.jpg" alt="photo38" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/39.jpg" alt="photo39" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/40.jpg" alt="photo40" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/41.jpg" alt="photo41" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/42.jpg" alt="photo42" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/43.jpg" alt="photo43" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/44.jpg" alt="photo44" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/45.jpg" alt="photo45" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/46.jpg" alt="photo46" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/47.jpg" alt="photo47" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/48.jpg" alt="photo48" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/49.jpg" alt="photo49" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/50.jpg" alt="photo50" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/51.jpg" alt="photo51" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/52.jpg" alt="photo52" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/53.jpg" alt="photo53" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/54.jpg" alt="photo54" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/55.jpg" alt="photo55" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/56.jpg" alt="photo56" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/57.jpg" alt="photo57" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/58.jpg" alt="photo58" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/59.jpg" alt="photo59" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/60.jpg" alt="photo60" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/61.jpg" alt="photo61" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/62.jpg" alt="photo62" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/63.jpg" alt="photo63" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/64.jpg" alt="photo64" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/65.jpg" alt="photo65" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/66.jpg" alt="photo66" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/67.jpg" alt="photo67" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/68.jpg" alt="photo68" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/69.jpg" alt="photo69" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/70.jpg" alt="photo70" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/71.jpg" alt="photo71" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/72.jpg" alt="photo72" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/73.jpg" alt="photo73" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/74.jpg" alt="photo74" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/75.jpg" alt="photo75" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/76.jpg" alt="photo76" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/77.jpg" alt="photo77" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/78.jpg" alt="photo78" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/79.jpg" alt="photo79" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/80.jpg" alt="photo80" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/81.jpg" alt="photo81" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/82.jpg" alt="photo82" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/83.jpg" alt="photo83" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/84.jpg" alt="photo84" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/85.jpg" alt="photo85" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/86.jpg" alt="photo86" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/87.jpg" alt="photo87" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/88.jpg" alt="photo88" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/89.jpg" alt="photo89" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/90.jpg" alt="photo90" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/91.jpg" alt="photo91" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/92.jpg" alt="photo92" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/93.jpg" alt="photo93" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/94.jpg" alt="photo94" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/95.jpg" alt="photo95" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/96.jpg" alt="photo96" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/97.jpg" alt="photo97" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/98.jpg" alt="photo98" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/99.jpg" alt="photo99" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/100.jpg" alt="photo100" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/101.jpg" alt="photo101" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/102.jpg" alt="photo102" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/103.jpg" alt="photo103" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/104.jpg" alt="photo104" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/105.jpg" alt="photo105" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/106.jpg" alt="photo106" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/107.jpg" alt="photo107" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/108.jpg" alt="photo108" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/109.jpg" alt="photo109" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/110.jpg" alt="photo110" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/111.jpg" alt="photo111" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/112.jpg" alt="photo112" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/113.jpg" alt="photo113" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/114.jpg" alt="photo114" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/115.jpg" alt="photo115" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/116.jpg" alt="photo116" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/117.jpg" alt="photo117" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/118.jpg" alt="photo118" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/119.jpg" alt="photo119" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/120.jpg" alt="photo120" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/121.jpg" alt="photo121" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/122.jpg" alt="photo122" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/123.jpg" alt="photo123" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/124.jpg" alt="photo124" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/125.jpg" alt="photo125" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/126.jpg" alt="photo126" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/127.jpg" alt="photo127" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+<div class="flex items-center justify-center bg-gray-50 rounded-lg shadow-sm overflow-hidden h-[450px]">
+  <img src="portraits and headshots/128.jpg" alt="photo128" class="cursor-pointer album-img max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+
+   </div>
+</main>
+
+  <!-- Модальное окно (Должно быть здесь!) -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-[9999] bg-black bg-opacity-95 modal-overlay">
+    <!-- Кнопки управления -->
+    <button id="closeBtn" class="absolute top-6 right-8 text-white text-5xl font-light hover:text-gray-300 transition z-[10001]">&times;</button>
+    <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-6xl font-light hover:text-gray-400 transition z-[10001]">❮</button>
+    <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-6xl font-light hover:text-gray-400 transition z-[10001]">❯</button>
+
+    <!-- Контейнер для фото -->
+    <div class="flex items-center justify-center w-full h-full p-4">
+      <img id="modalImg" src="" alt="Full View" class="max-w-full max-h-full object-contain shadow-2xl">
+    </div>
+  </div>
+
+  <script src="script_portraits.js"></script>
+</body>
+</html>
