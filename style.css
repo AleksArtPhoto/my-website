@@ -292,10 +292,29 @@ PORTFOLIO
 html {
   scrollbar-gutter: stable;
 }
+/* =========================
+   MODAL FIX
+========================= */
 #modal {
-    z-index: 9999 !important; /* Самый высокий приоритет */
+    display: none; /* По умолчанию скрыто */
+    z-index: 9999 !important;
+    position: fixed;
+    inset: 0;
+}
+
+/* Когда JS убирает .hidden, включаем flex */
+#modal:not(.hidden) {
+    display: flex !important;
 }
 
 #closeBtn, #prevBtn, #nextBtn {
-    z-index: 10000 !important; /* Кнопки поверх самой подложки модалки */
+    z-index: 10001 !important;
+    cursor: pointer;
+}
+
+#modalImg {
+    z-index: 10000 !important;
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
 }
