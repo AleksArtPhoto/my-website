@@ -292,3 +292,10 @@ PORTFOLIO
 html {
   scrollbar-gutter: stable;
 }
+#modal {
+    z-index: 9999 !important; /* Самый высокий приоритет */
+}
+
+#closeBtn, #prevBtn, #nextBtn {
+    z-index: 10000 !important; /* Кнопки поверх самой подложки модалки */
+}
