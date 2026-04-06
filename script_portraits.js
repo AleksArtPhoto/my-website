@@ -74,4 +74,31 @@ if (modalImg) {
   modalImg.addEventListener('contextmenu', (e) => e.preventDefault());
   modalImg.setAttribute('draggable', 'false');
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.onclick = function(e) {
+            e.preventDefault();
+            // Переключаем класс hidden
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            }
+        };
+
+        // Закрываем при клике на ссылки
+        const links = mobileMenu.querySelectorAll('a');
+        links.forEach(link => {
+            link.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            };
+        });
+    }
+});
 
