@@ -1,0 +1,79 @@
+/* =========================
+   BASE INTEGRATION
+========================= */
+html, body {
+  overflow-x: hidden;
+  font-family: 'Josefin Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* =========================
+   NORDIC CUSTOM BUTTONS (Из вашего стиля)
+========================= */
+.btn-nordic {
+  background-color: #94a3b8;
+  color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-nordic:hover {
+  background-color: #1e293b;
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.btn-nordic:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   CUSTOM FORMS & SLIDER
+========================= */
+#toggle-bg {
+  width: 138px;
+  left: 4px;
+  background: #94a3b8; /* Заменено синее на ваш фирменный серый */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Кастомизация кнопок таймслотов "Starts at..." */
+.slot-btn {
+  font-family: 'Josefin Sans', sans-serif;
+  transition: all 0.2s ease;
+}
+
+/* Стиль предупреждений */
+.border-red-500 {
+  border-color: #f43f5e !important;
+}
+
+/* Корректировка iFrame контейнера Stripe */
+#card-element {
+  min-height: 46px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+}
+
+/* Стилизация календаря Litepicker под общий дизайн */
+.litepicker {
+  font-family: 'Josefin Sans', sans-serif !important;
+  border: 1px solid #f1f5f9 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 0.5rem !important;
+}
+.litepicker .container__months .month-item .container__days .day-item.is-start-date,
+.litepicker .container__months .month-item .container__days .day-item.is-end-date {
+  background-color: #1e293b !important;
+}
+.litepicker .container__months .month-item .container__days .day-item.is-in-range {
+  background-color: #f1f5f9 !important;
+}
+.litepicker .container__months .month-item .container__days .day-item:hover {
+  color: #1e293b !important;
+  box-shadow: inset 0 0 0 1px #94a3b8 !important;
+}
