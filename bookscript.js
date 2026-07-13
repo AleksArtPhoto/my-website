@@ -256,9 +256,13 @@ document.getElementById('close-modal').addEventListener('click', () => {
   document.getElementById('payment-modal').classList.add('hidden');
 });
 
-const btn = document.getElementById('menu-btn');
-const menu = document.getElementById('mobile-menu');
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
 
-btn.addEventListener('click', () => {
-  menu.classList.toggle('hidden');
+  if (btn && menu) {
+    btn.addEventListener('click', function () {
+      menu.classList.toggle('hidden');
+    });
+  }
 });
