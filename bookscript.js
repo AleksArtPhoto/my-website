@@ -266,3 +266,54 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleContainer = document.getElementById('toggle-container');
+    const toggleBg = document.getElementById('toggle-bg');
+    const textB2C = document.getElementById('text-b2c');
+    const textB2B = document.getElementById('text-b2b');
+    
+    const b2cContent = document.getElementById('b2c-content');
+    const b2bContent = document.getElementById('b2b-content');
+
+    if (!toggleContainer || !toggleBg || !textB2C || !textB2B) return;
+
+    let isBusinessMode = false;
+
+    // стартовое состояние
+    toggleBg.style.left = '4px';
+    toggleBg.style.background = '#e2e8f0';
+    textB2C.style.color = '#1e293b';
+    textB2B.style.color = '#94a3b8';
+
+    toggleContainer.addEventListener('click', () => {
+        isBusinessMode = !isBusinessMode;
+
+        if (isBusinessMode) {
+            // 👉 вправо
+            toggleBg.style.left = 'calc(100% - 144px)';
+            toggleBg.style.background = '#2c3e50';
+
+            textB2B.style.color = '#ffffff';
+            textB2C.style.color = '#94a3b8';
+
+            if (b2cContent && b2bContent) {
+                b2cContent.classList.add('hidden');
+                b2bContent.classList.remove('hidden');
+            }
+
+        } else {
+            // 👉 влево
+            toggleBg.style.left = '4px';
+            toggleBg.style.background = '#d8e0e9';
+
+            textB2C.style.color = '#1e293b';
+            textB2B.style.color = '#94a3b8';
+
+            if (b2cContent && b2bContent) {
+                b2bContent.classList.add('hidden');
+                b2cContent.classList.remove('hidden');
+            }
+        }
+    });
+});
