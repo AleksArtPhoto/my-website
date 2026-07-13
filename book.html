@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="bookstyle.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+  
 
   
   <!-- Платежная система Stripe SDK -->
@@ -146,9 +146,9 @@
     </div>
   </div>
 
-  <script src="https://jsdelivr.net"></script>
-  
-  <!-- Ваш файл логики -->
+  <!-- Подключаем только стабильный внешний скрипт календаря в самом конце -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
   <script src="bookscript.js"></script>
 </body>
 </html>
