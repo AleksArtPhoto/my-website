@@ -199,7 +199,7 @@ async function initStripePayment(amount, formElement) {
   };
 
   try {
-    const response = await fetch('https://onrender.com', {
+    const response = await fetch('https://aleksart-backend.onrender.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(bookingData)
