@@ -212,6 +212,9 @@ select:focus, input:focus, textarea:focus {
   justify-content: center;
   z-index: 100;
   padding: 15px;
+.hidden {
+  display: none !important;
+}
 }
 .modal-content {
   background: #ffffff;
