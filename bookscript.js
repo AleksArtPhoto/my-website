@@ -255,3 +255,10 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('close-modal').addEventListener('click', () => {
   document.getElementById('payment-modal').classList.add('hidden');
 });
+
+const btn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
