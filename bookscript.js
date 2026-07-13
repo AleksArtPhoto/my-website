@@ -1,5 +1,5 @@
 // 1. Инициализация Stripe фронтенд SDK. (Замените pk_test_... на ваш ключ из ЛК Stripe)
-const stripe = Stripe('pk_test_YOUR_PUBLIC_KEY_HERE'); 
+const stripe = Stripe('pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt'); 
 let elements;
 let cardElement;
 
@@ -138,10 +138,8 @@ function renderTimeSlots() {
     btn.textContent = `Starts at ${timeLabel}`;
     btn.disabled = isBooked;
     
-    btn.className = `slot-btn border p-3 text-xs sm:text-sm font-semibold rounded-md transition-all duration-150 ${
-      isBooked ? 'bg-slate-100 text-slate-300 cursor-not-allowed border-slate-100' : 'hover:bg-slate-50 border-slate-200 text-slate-700'
-    } ${isSelected ? 'bg-slate-800 text-white hover:bg-slate-900 border-slate-800 shadow-sm' : ''}`;
-    
+    btn.className = `slot-btn ${isSelected ? 'slot-btn-selected' : ''}`;
+
     btn.onclick = () => {
       selectedTimeStart = timeLabel;
       renderTimeSlots();
