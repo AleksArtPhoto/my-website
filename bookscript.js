@@ -268,52 +268,40 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleContainer = document.getElementById('toggle-container');
-    const toggleBg = document.getElementById('toggle-bg');
-    const textB2C = document.getElementById('text-b2c');
-    const textB2B = document.getElementById('text-b2b');
-    
+    const bg = document.querySelector('.toggle-selection-bg');
+
+    const btnB2C = document.getElementById('btn-b2c');
+    const btnB2B = document.getElementById('btn-b2b');
+
     const b2cContent = document.getElementById('b2c-content');
     const b2bContent = document.getElementById('b2b-content');
 
-    if (!toggleContainer || !toggleBg || !textB2C || !textB2B) return;
+    if (!bg || !btnB2C || !btnB2B) return;
 
-    let isBusinessMode = false;
+    function switchTo(mode) {
+        // сброс
+        btnB2C.style.color = '#94a3b8';
+        btnB2B.style.color = '#94a3b8';
 
-    // стартовое состояние
-    toggleBg.style.left = '4px';
-    toggleBg.style.background = '#e2e8f0';
-    textB2C.style.color = '#1e293b';
-    textB2B.style.color = '#94a3b8';
+        b2cContent.classList.add('hidden');
+        b2bContent.classList.add('hidden');
 
-    toggleContainer.addEventListener('click', () => {
-        isBusinessMode = !isBusinessMode;
+        if (mode === 'b2c') {
+            bg.style.left = '4px';
+            bg.style.background = '#e2e8f0';
 
-        if (isBusinessMode) {
-            // 👉 вправо
-            toggleBg.style.left = '164px';
-            toggleBg.style.background = '#2c3e50';
+            btnB2C.style.color = '#1e293b';
+            b2cContent.classList.remove('hidden');
 
-            textB2B.style.color = '#ffffff';
-            textB2C.style.color = '#94a3b8';
+        } else if (mode === 'b2b') {
+            bg.style.left = '124px'; // как на главной логике (120 + padding)
+            bg.style.background = '#2c3e50';
 
-            if (b2cContent && b2bContent) {
-                b2cContent.classList.add('hidden');
-                b2bContent.classList.remove('hidden');
-            }
-
-        } else {
-            // 👉 влево
-            toggleBg.style.left = '4px';
-            toggleBg.style.background = '#d8e0e9';
-
-            textB2C.style.color = '#1e293b';
-            textB2B.style.color = '#94a3b8';
-
-            if (b2cContent && b2bContent) {
-                b2bContent.classList.add('hidden');
-                b2cContent.classList.remove('hidden');
-            }
+            btnB2B.style.color = '#ffffff';
+            b2bContent.classList.remove('hidden');
         }
-    });
+    }
+
+    btnB2C.onclick = () => switchTo('b2c');
+    btnB2B.onclick = () => switchTo('b2b');
 });
