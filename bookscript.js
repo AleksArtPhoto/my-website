@@ -309,22 +309,10 @@ document.addEventListener('DOMContentLoaded', () => {
             textB2C.style.color = '#2c3e50';
             textB2B.style.color = '#94a3b8';
 
-            if (b2cContent && b2bContent) {
+         if (b2cContent && b2bContent) {
                 b2bContent.classList.add('hidden');
                 b2cContent.classList.remove('hidden');
             }
-          function setB2C() {
-    bg.style.left = '4px';
-    bg.style.background = '#d8e0e9';
-
-    textB2C.style.color = '#2c3e50';
-    textB2B.style.color = '#94a3b8';
-
-    if (b2cContent && b2bContent) {
-        b2bContent.classList.add('hidden');
-        b2cContent.classList.remove('hidden');
-    }
-}
-        
+        }
     });
 });
