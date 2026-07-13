@@ -138,10 +138,10 @@ function renderTimeSlots() {
     btn.textContent = `Starts at ${timeLabel}`;
     btn.disabled = isBooked;
     
-    btn.className = `border p-3 text-xs sm:text-sm font-medium rounded transition-all duration-150 ${
-      isBooked ? 'bg-gray-200 text-gray-400 cursor-not-allowed border-gray-200' : 'hover:bg-blue-50 border-gray-300 text-gray-700'
-    } ${isSelected ? 'bg-blue-600 text-white hover:bg-blue-700 border-blue-600 shadow' : ''}`;
-
+    btn.className = `slot-btn border p-3 text-xs sm:text-sm font-semibold rounded-md transition-all duration-150 ${
+      isBooked ? 'bg-slate-100 text-slate-300 cursor-not-allowed border-slate-100' : 'hover:bg-slate-50 border-slate-200 text-slate-700'
+    } ${isSelected ? 'bg-slate-800 text-white hover:bg-slate-900 border-slate-800 shadow-sm' : ''}`;
+    
     btn.onclick = () => {
       selectedTimeStart = timeLabel;
       renderTimeSlots();
