@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 👉 текст
             textB2B.style.color = '#ffffff';
-            textB2C.style.color = '#6b7280';
+            textB2C.style.color = '#94a3b8';
 
             // 👉 контент
             if (b2cContent && b2bContent) {
@@ -304,10 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // 👉 влево
             bg.style.left = '4px';
 
-            bg.style.background = 'linear-gradient(135deg, #bdc3c7 0%, #ffffff 50%, #bdc3c7 100%)';
+            bg.style.background = '#d8e0e9';
 
-            textB2C.style.color = '#ffffff';
-            textB2B.style.color = '#6b7280';
+            textB2C.style.color = '#2c3e50';
+            textB2B.style.color = '#94a3b8';
 
             if (b2cContent && b2bContent) {
                 b2bContent.classList.add('hidden');
