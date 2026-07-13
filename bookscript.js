@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isBusinessMode) {
             // 👉 вправо
-            toggleBg.style.left = 'calc(100% - 144px)';
+            toggleBg.style.left = '164px';
             toggleBg.style.background = '#2c3e50';
 
             textB2B.style.color = '#ffffff';
