@@ -55,29 +55,33 @@ h1 {
   letter-spacing: -0.03em;
 }
 
-/* Фирменный переключатель B2C / B2B */
-#toggle-container {
-  position: relative;
-  background: #f1f5f9;
-  padding: 4px;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  width: 288px;
-  height: 48px;
-  margin: 0 auto 35px auto;
-  border: 1px solid #e2e8f0;
-  cursor: pointer;
-}
-#toggle-bg {
+/* Фирменный переключатель таблетка ползунок B2C / B2B */
+.toggle-selection-bg {
   position: absolute;
   height: 40px;
-  width: 120px; /* как на главной */
+  width: 120px; /* Ширина таблетки */
   border-radius: 9999px;
-  background: #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
-  left: 4px;
+  z-index: 1;
+}
+
+/* Кнопки текста */
+.toggle-btn {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em; /* Отступы между буквами */
+  transition: color 0.3s ease;
+  user-select: none;
+}
+html {
+  scrollbar-gutter: stable;
+}
 }
 /* Поля ввода и селекты */
 label {
