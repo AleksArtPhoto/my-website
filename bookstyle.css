@@ -200,7 +200,7 @@ select:focus, input:focus, textarea:focus {
 .text-rose-500 {
   color: #ef4444;
 }
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 /* Модальное окно Stripe */
 .fixed-modal {
@@ -212,9 +212,6 @@ select:focus, input:focus, textarea:focus {
   justify-content: center;
   z-index: 100;
   padding: 15px;
-.hidden {
-  display: none !important;
-}
 }
 .modal-content {
   background: #ffffff;
