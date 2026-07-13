@@ -26,15 +26,16 @@ header .max-w-7xl {
   justify-content: space-between;
   align-items: center;
 }
-header nav a {
-  color: #1e293b;
-  text-decoration: none;
+/* Стили ссылок навигации */
+.nav-link {
+  font-size: 1.125rem;
+  color: #1f2937;
+  transition: color 0.3s ease;
   font-weight: 500;
-  margin-left: 24px;
-  transition: color 0.2s ease;
 }
-header nav a:hover {
-  color: #94a3b8;
+
+.nav-link:hover {
+  color: #2563eb;
 }
 
 /* Главная карточка формы */
