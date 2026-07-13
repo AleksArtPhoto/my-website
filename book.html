@@ -4,120 +4,126 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Page - Aleks Art Photo</title>
-  <!-- Подключение библиотек -->
+  <!-- Подключение шрифта из вашего основного стиля -->
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Библиотеки -->
   <script src="https://tailwindcss.com"></script>
   <script src="https://jsdelivr.net"></script>
   <link href="https://jsdelivr.net" rel="stylesheet" />
   <script src="https://stripe.com"></script>
-  <!-- Подключение вашего файла стилей -->
+  
   <link rel="stylesheet" href="bookstyle.css" />
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans">
 
-  <header class="bg-white shadow-md sticky top-0 z-50">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="text-2xl font-bold flex items-center space-x-3">
         <img src="logo/logo1.png" width="50" height="50" alt="logo" class="object-contain">
-        <span>Aleks Art Photo</span>
+        <span class="tracking-wide">Aleks Art Photo</span>
       </div>
-      <nav class="space-x-4">
-        <a href="home.html" class="hover:text-blue-600 font-medium">Home</a>
-        <a href="portfolio.html" class="hover:text-blue-600 font-medium">Portfolio</a>
-        <a href="services.html" class="hover:text-blue-600 font-medium">Services</a>
-        <a href="home.html#contact" class="hover:text-blue-600 font-medium">Contacts</a>
+      <nav class="space-x-6">
+        <a href="home.html" class="hover:text-slate-500 transition-colors font-medium">Home</a>
+        <a href="portfolio.html" class="hover:text-slate-500 transition-colors font-medium">Portfolio</a>
+        <a href="services.html" class="hover:text-slate-500 transition-colors font-medium">Services</a>
+        <a href="home.html#contact" class="hover:text-slate-500 transition-colors font-medium">Contacts</a>
       </nav>
     </div>
   </header>
 
-  <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-lg mt-6 mb-12">
-    <h1 class="text-3xl font-bold mb-6 text-center text-gray-900">Book a Photo Session</h1>
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-slate-100 mt-8 mb-12">
+    <h1 class="text-3xl font-bold mb-8 text-center text-slate-900 tracking-tight">Book a Photo Session</h1>
 
+    <!-- Контейнер переключателя в вашем фирменном стиле -->
     <div class="flex justify-center mb-8">
-      <div id="toggle-container" class="relative bg-gray-200 p-1 rounded-full flex items-center w-72 h-12 shadow-inner cursor-pointer overflow-hidden">
-        <div id="toggle-bg" class="absolute h-10 rounded-full shadow-md transition-all duration-300 ease-in-out"></div>
+      <div id="toggle-container" class="relative bg-slate-100 p-1 rounded-full flex items-center w-72 h-12 border border-slate-200 cursor-pointer overflow-hidden select-none">
+        <div id="toggle-bg" class="absolute h-10 rounded-full shadow-sm transition-all duration-300 ease-in-out"></div>
         <div id="text-b2c" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300 text-white">For Individuals</div>
-        <div id="text-b2b" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300 text-gray-500">For Business</div>
+        <div id="text-b2b" class="relative z-10 flex-1 text-center text-sm font-bold transition-colors duration-300 text-slate-500">For Business</div>
       </div>
     </div>
 
     <div class="mb-6">
-      <label for="services-select" class="block font-semibold mb-2 text-gray-700">Select Service *</label>
-      <select id="services-select" name="service" required class="w-full border border-gray-300 p-3 rounded bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none">
+      <label for="services-select" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select Service *</label>
+      <select id="services-select" name="service" required class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors">
       </select>
     </div>
 
-    <div class="mb-6 bg-gray-50 p-4 rounded border border-gray-200 flex items-center shadow-sm">
-      <input type="checkbox" id="gift-certificate" name="gift_certificate" class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-3 cursor-pointer" />
-      <label for="gift-certificate" class="font-medium text-gray-700 cursor-pointer select-none">Buy as a Gift Certificate</label>
+    <div class="mb-6 bg-slate-50 p-4 rounded-md border border-slate-100 flex items-center">
+      <input type="checkbox" id="gift-certificate" name="gift_certificate" class="w-4 h-4 text-slate-700 border-slate-300 rounded focus:ring-slate-400 mr-3 cursor-pointer" />
+      <label for="gift-certificate" class="font-semibold text-slate-700 cursor-pointer select-none">Buy as a Gift Certificate</label>
     </div>
 
     <div class="mb-6">
-      <label for="datepicker" class="block font-semibold mb-2 text-gray-700">Select a date *</label>
-      <input type="text" id="datepicker" readonly placeholder="Click to choose a date..." class="border border-gray-300 rounded p-3 w-full bg-white cursor-pointer focus:border-blue-500 outline-none" required />
-      <div id="date-warning" class="text-red-500 text-sm mt-1 hidden">Please select a date first.</div>
+      <label for="datepicker" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select a date *</label>
+      <input type="text" id="datepicker" readonly placeholder="Click to open calendar..." class="border border-slate-200 rounded-md p-3 w-full bg-white cursor-pointer focus:border-slate-400 outline-none transition-colors" required />
+      <div id="date-warning" class="text-rose-500 text-sm mt-1 hidden">Please select a date first.</div>
     </div>
 
     <div class="mb-8">
-      <label class="block font-semibold mb-2 text-gray-700">Select start time *</label>
+      <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select start time *</label>
       <div id="time-slots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
       </div>
     </div>
 
-    <form id="booking-form" class="space-y-4 border-t border-gray-200 pt-6">
+    <form id="booking-form" class="space-y-4 border-t border-slate-100 pt-6">
       <div>
-        <label class="block font-semibold text-gray-700 mb-1">Full Name *</label>
-        <input type="text" name="name" required class="w-full border border-gray-300 p-2.5 rounded focus:border-blue-500 outline-none" />
+        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name *</label>
+        <input type="text" name="name" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
       <div>
-        <label class="block font-semibold text-gray-700 mb-1">Email *</label>
-        <input type="email" name="email" required class="w-full border border-gray-300 p-2.5 rounded focus:border-blue-500 outline-none" />
+        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Email *</label>
+        <input type="email" name="email" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
       <div>
-        <label class="block font-semibold text-gray-700 mb-1">Phone *</label>
-        <input type="tel" name="phone" required class="w-full border border-gray-300 p-2.5 rounded focus:border-blue-500 outline-none" />
+        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Phone *</label>
+        <input type="tel" name="phone" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
       <div>
-        <label class="block font-semibold text-gray-700 mb-1">Location / Address of the Shoot *</label>
-        <input type="text" name="location" required class="w-full border border-gray-300 p-2.5 rounded focus:border-blue-500 outline-none" />
+        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Location / Address of the Shoot *</label>
+        <input type="text" name="location" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
       <div>
-        <label class="block font-semibold text-gray-700 mb-1">Comment (optional, max 500 chars)</label>
-        <textarea name="comment" maxlength="500" rows="3" class="w-full border border-gray-300 p-2.5 rounded focus:border-blue-500 outline-none"></textarea>
+        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Comment (optional, max 500 chars)</label>
+        <textarea name="comment" maxlength="500" rows="3" class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors"></textarea>
       </div>
       
-      <div class="text-2xl font-bold my-6 text-right text-blue-800" id="live-price-display">Current Price: 0 DKK</div>
+      <div class="text-xl font-bold my-6 text-right text-slate-900 tracking-tight" id="live-price-display">Current Price: 0 DKK</div>
       
-      <button type="button" id="pay-button" class="w-full bg-blue-600 text-white px-6 py-3.5 rounded-lg font-bold text-lg hover:bg-blue-700 shadow transition-all duration-150">
+      <!-- Применен ваш класс btn-nordic -->
+      <button type="button" id="pay-button" class="w-full btn-nordic py-4 rounded-md font-bold text-center tracking-wider uppercase cursor-pointer">
         Pay and Book
       </button>
     </form>
   </div>
 
-  <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-lg p-6 relative w-full max-w-md shadow-2xl transition-all duration-300">
-      <button id="close-modal" class="absolute top-3 right-3 text-3xl text-gray-400 hover:text-gray-800">&times;</button>
-      <h2 class="text-xl font-bold mb-1 text-gray-900">Confirm and Pay</h2>
-      <p id="total-price" class="mb-4 text-lg font-semibold text-blue-600">Total: 0 DKK</p>
+  <div id="payment-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg p-6 relative w-full max-w-md shadow-xl border border-slate-100">
+      <button id="close-modal" class="absolute top-3 right-3 text-3xl text-slate-400 hover:text-slate-800 transition-colors">&times;</button>
+      <h2 class="text-xl font-bold mb-1 text-slate-900">Confirm and Pay</h2>
+      <p id="total-price" class="mb-4 text-lg font-bold text-slate-700">Total: 0 DKK</p>
       
       <div id="payment-request-button" class="mb-2"></div>
       
       <div class="relative flex py-2 items-center my-4">
-          <div class="flex-grow border-t border-gray-300"></div>
-          <span class="flex-shrink mx-4 text-gray-400 text-sm">or pay with card</span>
-          <div class="flex-grow border-t border-gray-300"></div>
+          <div class="flex-grow border-t border-slate-200"></div>
+          <span class="flex-shrink mx-4 text-slate-400 text-xs uppercase tracking-wider">or pay with card</span>
+          <div class="flex-grow border-t border-slate-200"></div>
       </div>
 
       <form id="payment-form" class="space-y-4">
-        <div id="card-element" class="p-3 border border-gray-300 rounded bg-gray-50"></div>
-        <div id="card-errors" class="text-red-500 text-sm hidden font-medium" role="alert"></div>
-        <button type="submit" id="submit-stripe" class="w-full bg-blue-600 text-white py-3 rounded-md font-bold hover:bg-blue-700 transition">
+        <div id="card-element" class="p-3.5 border border-slate-200 rounded-md bg-slate-50"></div>
+        <div id="card-errors" class="text-rose-500 text-sm hidden font-semibold" role="alert"></div>
+        <button type="submit" id="submit-stripe" class="w-full btn-nordic py-3 rounded-md font-bold uppercase tracking-wider">
           Pay Now
         </button>
       </form>
     </div>
   </div>
 
-  <!-- Подключение вашего файла скрипта -->
   <script src="bookscript.js"></script>
 </body>
 </html>
