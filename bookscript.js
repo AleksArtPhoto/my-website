@@ -257,7 +257,7 @@ document.getElementById('close-modal').addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById('menu-btn');
+  const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
 
   if (btn && menu) {
