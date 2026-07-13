@@ -174,7 +174,7 @@ document.getElementById('pay-button').addEventListener('click', async () => {
 
   const total = calculateTotalPrice();
   document.getElementById('total-price').textContent = `Total: ${total} DKK`;
-  document.getElementById('payment-modal').classList.remove('hidden');
+  document.getElementById('payment-modal').classList.remove('modal-hidden');
 
   await initStripePayment(total, form);
 });
