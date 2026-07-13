@@ -72,11 +72,11 @@ h1 {
 #toggle-bg {
   position: absolute;
   height: 40px;
-  width: 140px;
+  width: 120px; /* как на главной */
   border-radius: 9999px;
-  background: #94a3b8;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
   left: 4px;
 }
 /* Поля ввода и селекты */
