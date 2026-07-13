@@ -4,18 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Page - Aleks Art Photo</title>
-  <!-- Подключение шрифта из вашего основного стиля -->
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Библиотеки -->
-  <script src="https://tailwindcss.com"></script>
-  <script src="https://jsdelivr.net"></script>
-  <link href="https://jsdelivr.net" rel="stylesheet" />
-  <script src="https://stripe.com"></script>
+  <!-- Подключение шрифтов -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bookstyle.css"/>
   
-  <link rel="stylesheet" href="bookstyle.css" />
+  <!-- Платежная система Stripe SDK -->
+  <script src="https://js.stripe.com/v3/"></script>
+  
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
@@ -26,18 +23,18 @@
         <span class="tracking-wide">Aleks Art Photo</span>
       </div>
       <nav class="space-x-6">
-        <a href="home.html" class="hover:text-slate-500 transition-colors font-medium">Home</a>
+        <a href="index.html" class="hover:text-slate-500 transition-colors font-medium">Home</a>
         <a href="portfolio.html" class="hover:text-slate-500 transition-colors font-medium">Portfolio</a>
-        <a href="services.html" class="hover:text-slate-500 transition-colors font-medium">Services</a>
+        <a href="index.html#services" class="hover:text-slate-500 transition-colors font-medium">Services</a>
         <a href="home.html#contact" class="hover:text-slate-500 transition-colors font-medium">Contacts</a>
       </nav>
     </div>
   </header>
 
-  <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-slate-100 mt-8 mb-12">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-slate-100 mt-8 mb-12 main-card">
     <h1 class="text-3xl font-bold mb-8 text-center text-slate-900 tracking-tight">Book a Photo Session</h1>
 
-    <!-- Контейнер переключателя в вашем фирменном стиле -->
+    <!-- Контейнер переключателя B2C / B2B -->
     <div class="flex justify-center mb-8">
       <div id="toggle-container" class="relative bg-slate-100 p-1 rounded-full flex items-center w-72 h-12 border border-slate-200 cursor-pointer overflow-hidden select-none">
         <div id="toggle-bg" class="absolute h-10 rounded-full shadow-sm transition-all duration-300 ease-in-out"></div>
@@ -48,11 +45,11 @@
 
     <div class="mb-6">
       <label for="services-select" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select Service *</label>
-      <select id="services-select" name="service" required class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors">
+      <select id="services-select" name="service" required class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors select-input">
       </select>
     </div>
 
-    <div class="mb-6 bg-slate-50 p-4 rounded-md border border-slate-100 flex items-center">
+    <div class="mb-6 bg-slate-50 p-4 rounded-md border border-slate-100 flex items-center checkbox-card">
       <input type="checkbox" id="gift-certificate" name="gift_certificate" class="w-4 h-4 text-slate-700 border-slate-300 rounded focus:ring-slate-400 mr-3 cursor-pointer" />
       <label for="gift-certificate" class="font-semibold text-slate-700 cursor-pointer select-none">Buy as a Gift Certificate</label>
     </div>
@@ -65,43 +62,42 @@
 
     <div class="mb-8">
       <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select start time *</label>
-      <div id="time-slots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+      <div id="time-slots" class="grid-slots">
       </div>
     </div>
 
     <form id="booking-form" class="space-y-4 border-t border-slate-100 pt-6">
-      <div>
+      <div class="form-group">
         <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name *</label>
         <input type="text" name="name" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
-      <div>
+      <div class="form-group">
         <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Email *</label>
         <input type="email" name="email" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
-      <div>
+      <div class="form-group">
         <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Phone *</label>
         <input type="tel" name="phone" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
-      <div>
+      <div class="form-group">
         <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Location / Address of the Shoot *</label>
         <input type="text" name="location" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
       </div>
-      <div>
+      <div class="form-group">
         <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Comment (optional, max 500 chars)</label>
         <textarea name="comment" maxlength="500" rows="3" class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors"></textarea>
       </div>
       
       <div class="text-xl font-bold my-6 text-right text-slate-900 tracking-tight" id="live-price-display">Current Price: 0 DKK</div>
       
-      <!-- Применен ваш класс btn-nordic -->
       <button type="button" id="pay-button" class="w-full btn-nordic py-4 rounded-md font-bold text-center tracking-wider uppercase cursor-pointer">
         Pay and Book
       </button>
     </form>
   </div>
 
-  <div id="payment-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-lg p-6 relative w-full max-w-md shadow-xl border border-slate-100">
+  <div id="payment-modal" class="fixed-modal hidden">
+    <div class="modal-content bg-white rounded-lg p-6 relative shadow-xl border border-slate-100">
       <button id="close-modal" class="absolute top-3 right-3 text-3xl text-slate-400 hover:text-slate-800 transition-colors">&times;</button>
       <h2 class="text-xl font-bold mb-1 text-slate-900">Confirm and Pay</h2>
       <p id="total-price" class="mb-4 text-lg font-bold text-slate-700">Total: 0 DKK</p>
@@ -124,6 +120,9 @@
     </div>
   </div>
 
+  <!-- Подключаем только стабильный внешний скрипт календаря в самом конце -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
   <script src="bookscript.js"></script>
 </body>
 </html>
