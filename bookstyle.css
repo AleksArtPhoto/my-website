@@ -29,7 +29,7 @@ header .max-w-7xl {
 header nav a {
   color: #1e293b;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 24px;
   transition: color 0.2s ease;
 }
