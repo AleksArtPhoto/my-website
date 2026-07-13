@@ -242,6 +242,8 @@ async function initStripePayment(amount, formElement) {
 
 window.addEventListener('DOMContentLoaded', () => {
   updateServicesDropdown();
+
+  document.getElementById('payment-modal').classList.add('hidden');
   
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('status') === 'success') {
