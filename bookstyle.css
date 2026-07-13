@@ -79,15 +79,6 @@ h1 {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   left: 4px;
 }
-.relative { position: relative; }
-.z-10 { z-index: 10; }
-.flex-1 { flex: 1; }
-.text-center { text-align: center; }
-.text-sm { font-size: 14px; }
-.font-bold { font-weight: 700; }
-.text-white { color: #ffffff !important; }
-.text-slate-500 { color: #64748b !important; }
-
 /* Поля ввода и селекты */
 label {
   display: block;
@@ -200,7 +191,9 @@ select:focus, input:focus, textarea:focus {
 .text-rose-500 {
   color: #ef4444;
 }
-.hidden { display: none !important; }
+.modal-hidden {
+  display: none;
+}
 
 /* Модальное окно Stripe */
 .fixed-modal {
