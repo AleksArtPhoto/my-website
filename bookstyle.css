@@ -1,79 +1,226 @@
-/* =========================
-   BASE INTEGRATION
-========================= */
+/* ==========================================================================
+   ФИРМЕННЫЙ СКАНДИНАВСКИЙ СТИЛЬ — ALEKS ART PHOTO
+   ========================================================================== */
 html, body {
-  overflow-x: hidden;
+  background-color: #f8fafc;
+  color: #1e293b;
   font-family: 'Josefin Sans', sans-serif;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  letter-spacing: -0.025em;
+/* Навигация */
+header {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-
-/* =========================
-   NORDIC CUSTOM BUTTONS (Из вашего стиля)
-========================= */
-.btn-nordic {
-  background-color: #94a3b8;
-  color: #ffffff;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+header .max-w-7xl {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav a {
+  color: #1e293b;
   text-decoration: none;
+  font-weight: 600;
+  margin-left: 24px;
+  transition: color 0.2s ease;
+}
+header nav a:hover {
+  color: #94a3b8;
 }
 
-.btn-nordic:hover {
-  background-color: #1e293b;
-  transform: translateY(-1px);
-  color: #ffffff;
+/* Главная карточка формы */
+.main-card {
+  max-w-3xl: 768px;
+  max-width: 700px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
+  border: 1px solid #f1f5f9;
+}
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  letter-spacing: -0.03em;
 }
 
-.btn-nordic:active {
-  transform: translateY(0);
+/* Фирменный переключатель B2C / B2B */
+#toggle-container {
+  position: relative;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  width: 288px;
+  height: 48px;
+  margin: 0 auto 35px auto;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
 }
-
-/* =========================
-   CUSTOM FORMS & SLIDER
-========================= */
 #toggle-bg {
-  width: 138px;
-  left: 4px;
-  background: #94a3b8; /* Заменено синее на ваш фирменный серый */
+  position: absolute;
+  height: 40px;
+  width: 140px;
+  border-radius: 9999px;
+  background: #94a3b8;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  left: 4px;
+}
+.relative { position: relative; }
+.z-10 { z-index: 10; }
+.flex-1 { flex: 1; }
+.text-center { text-align: center; }
+.text-sm { font-size: 14px; }
+.font-bold { font-weight: 700; }
+.text-white { color: #ffffff !important; }
+.text-slate-500 { color: #64748b !important; }
+
+/* Поля ввода и селекты */
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  margin-bottom: 8px;
+}
+select, input[type="text"], input[type="email"], input[type="tel"], textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  padding: 12px;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  margin-bottom: 20px;
+}
+select:focus, input:focus, textarea:focus {
+  border-color: #94a3b8;
 }
 
-/* Кастомизация кнопок таймслотов "Starts at..." */
+/* Чекбокс сертификата */
+.checkbox-card {
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.checkbox-card label {
+  margin-bottom: 0;
+  text-transform: none;
+  font-size: 15px;
+  color: #334155;
+}
+
+/* Сетка кнопок времени */
+.grid-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* Кнопки времени (Ваши фирменные стили) */
 .slot-btn {
   font-family: 'Josefin Sans', sans-serif;
-  transition: all 0.2s ease;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #334155;
+}
+.slot-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
 }
 
-/* Стиль предупреждений */
+/* Кнопка в активном скандинавском стиле при выборе времени */
+.slot-btn-selected {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #1e293b !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.slot-btn:disabled {
+  background: #f1f5f9;
+  color: #cbd5e1;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+/* Фирменная Кнопка Отправки (btn-nordic из вашего стиля) */
+.btn-nordic {
+  width: 100%;
+  background-color: #94a3b8;
+  color: #ffffff;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-nordic:hover {
+  background-color: #1e293b;
+  transform: translateY(-2px);
+}
+
+/* Ошибки валидации */
 .border-red-500 {
-  border-color: #f43f5e !important;
+  border-color: #ef4444 !important;
 }
+.text-rose-500 {
+  color: #ef4444;
+}
+.hidden { display: none; }
 
-/* Корректировка iFrame контейнера Stripe */
-#card-element {
-  min-height: 46px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+/* Модальное окно Stripe */
+.fixed-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 15px;
 }
-
-/* Стилизация календаря Litepicker под общий дизайн */
-.litepicker {
-  font-family: 'Josefin Sans', sans-serif !important;
-  border: 1px solid #f1f5f9 !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
-  border-radius: 0.5rem !important;
+.modal-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
 }
-.litepicker .container__months .month-item .container__days .day-item.is-start-date,
-.litepicker .container__months .month-item .container__days .day-item.is-end-date {
-  background-color: #1e293b !important;
-}
-.litepicker .container__months .month-item .container__days .day-item.is-in-range {
-  background-color: #f1f5f9 !important;
-}
-.litepicker .container__months .month-item .container__days .day-item:hover {
-  color: #1e293b !important;
-  box-shadow: inset 0 0 0 1px #94a3b8 !important;
-}
+.absolute { position: absolute; }
+.top-3 { top: 12px; }
+.right-3 { right: 12px; }
