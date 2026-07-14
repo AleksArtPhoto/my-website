@@ -1,5 +1,6 @@
 let currentTab = 'b2c';
 
+// === ДАННЫЕ ===
 const services = {
   b2c: [
     { name: 'Basic Cleaning', price: 50 },
@@ -11,12 +12,12 @@ const services = {
   ]
 };
 
-// === ОБНОВЛЕНИЕ SELECT ===
+// === SELECT ===
 function updateServicesDropdown() {
   const select = document.getElementById('service-select');
   if (!select) return;
 
-  select.innerHTML = '';
+  select.innerHTML = '<option value="">Select Service</option>';
 
   services[currentTab].forEach(service => {
     const option = document.createElement('option');
@@ -24,18 +25,17 @@ function updateServicesDropdown() {
     option.textContent = `${service.name} ($${service.price})`;
     select.appendChild(option);
   });
-
-  updateTotal();
 }
 
-// === ЦЕНА ===
+// === PRICE ===
 function updateTotal() {
   const select = document.getElementById('service-select');
   const total = document.getElementById('total-price');
 
   if (!select || !total) return;
 
-  total.textContent = `$${select.value || 0}`;
+  const price = select.value || 0;
+  total.textContent = `$${price}`;
 }
 
 // === TOGGLE ===
@@ -50,17 +50,18 @@ function initToggle() {
   container.addEventListener('click', () => {
     if (currentTab === 'b2c') {
       currentTab = 'b2b';
-      bg.style.left = '134px';
-      txtB2C.style.color = '#6b7280';
-      txtB2B.style.color = '#ffffff';
+      if (bg) bg.style.left = '134px';
+      if (txtB2C) txtB2C.style.color = '#6b7280';
+      if (txtB2B) txtB2B.style.color = '#ffffff';
     } else {
       currentTab = 'b2c';
-      bg.style.left = '4px';
-      txtB2C.style.color = '#2c3e50';
-      txtB2B.style.color = '#6b7280';
+      if (bg) bg.style.left = '4px';
+      if (txtB2C) txtB2C.style.color = '#2c3e50';
+      if (txtB2B) txtB2B.style.color = '#6b7280';
     }
 
     updateServicesDropdown();
+    updateTotal();
   });
 }
 
@@ -84,7 +85,9 @@ function initModal() {
 
 // === STRIPE ===
 function initStripe() {
-  const stripe = Stripe('YOUR_PUBLIC_KEY'); // вставь ключ
+  if (typeof Stripe === 'undefined') return;
+
+  const stripe = Stripe('YOUR_PUBLIC_KEY');
   const checkoutBtn = document.getElementById('checkout-button');
 
   if (!checkoutBtn) return;
@@ -95,7 +98,6 @@ function initStripe() {
     });
 
     const session = await response.json();
-
     stripe.redirectToCheckout({ sessionId: session.id });
   });
 }
@@ -103,12 +105,13 @@ function initStripe() {
 // === INIT ===
 document.addEventListener('DOMContentLoaded', () => {
   updateServicesDropdown();
-  initToggle();
-  initModal();
-  initStripe();
 
   const select = document.getElementById('service-select');
   if (select) {
     select.addEventListener('change', updateTotal);
   }
+
+  initToggle();
+  initModal();
+  initStripe();
 });
