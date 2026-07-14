@@ -1,5 +1,5 @@
-// Stripe
-const stripe = Stripe('pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt'); 
+// ===== INIT =====
+const stripe = Stripe('pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt');
 
 let elements;
 let cardElement;
@@ -8,120 +8,103 @@ let selectedServiceId = '';
 let selectedServiceName = '';
 let currentPrice = 0;
 let selectedTimeStart = null;
-const bookedSlots = {}; 
 
-const indSelect = document.getElementById('individual-select');
-const bizSelect = document.getElementById('business-select');
+// ===== SAFE GET =====
+const $ = (id) => document.getElementById(id);
 
-// ===== ВЫБОР УСЛУГ =====
-if(indSelect) {
-  indSelect.addEventListener('change', () => {
-    if (indSelect.value !== "") {
-      if(bizSelect) bizSelect.value = ""; 
-      const option = indSelect.options[indSelect.selectedIndex];
+// ===== SERVICES =====
+const indSelect = $('individual-select');
+const bizSelect = $('business-select');
+
+function handleServiceChange(select, otherSelect) {
+  if (!select) return;
+
+  select.addEventListener('change', () => {
+    if (select.value !== "") {
+
+      if (otherSelect) otherSelect.value = "";
+
+      const option = select.options[select.selectedIndex];
       currentPrice = parseInt(option.dataset.price || 0);
-      selectedServiceId = indSelect.value;
-      selectedServiceName = option.text.split('—')[0].trim();
+
+      selectedServiceId = select.value;
+      selectedServiceName = option.text;
+
     } else {
-      resetSelection();
+      currentPrice = 0;
+      selectedServiceId = '';
+      selectedServiceName = '';
     }
+
     updatePriceDisplay();
     updatePayButtonState();
   });
 }
 
-if(bizSelect) {
-  bizSelect.addEventListener('change', () => {
-    if (bizSelect.value !== "") {
-      if(indSelect) indSelect.value = ""; 
-      const option = bizSelect.options[bizSelect.selectedIndex];
-      currentPrice = parseInt(option.dataset.price || 0);
-      selectedServiceId = bizSelect.value;
-      selectedServiceName = option.text.split('—')[0].trim();
-    } else {
-      resetSelection();
-    }
-    updatePriceDisplay();
-    updatePayButtonState();
-  });
-}
+handleServiceChange(indSelect, bizSelect);
+handleServiceChange(bizSelect, indSelect);
 
-function resetSelection() {
-  currentPrice = 0;
-  selectedServiceId = '';
-  selectedServiceName = '';
-}
-
+// ===== PRICE =====
 function updatePriceDisplay() {
-  const display = document.getElementById('live-price-display');
-  if(display) display.textContent = `Current Price: ${currentPrice} DKK`;
+  const el = $('live-price-display');
+  if (el) el.textContent = `Current Price: ${currentPrice} DKK`;
 }
 
-// ===== ПРОВЕРКА ДАТЫ =====
+// ===== DATE =====
 function showDateWarningIfNeeded() {
-  const dateField = document.getElementById('datepicker');
-  const warning = document.getElementById('date-warning');
+  const dateField = $('datepicker');
+  const warning = $('date-warning');
 
   if (!dateField || !dateField.value.trim()) {
-    if(dateField) dateField.classList.add('border-red-500');
-    if(warning) warning.classList.remove('hidden');
+    if (dateField) dateField.classList.add('border-red-500');
+    if (warning) warning.classList.remove('hidden');
     return true;
   } else {
-    if(dateField) dateField.classList.remove('border-red-500');
-    if(warning) warning.classList.add('hidden');
+    if (dateField) dateField.classList.remove('border-red-500');
+    if (warning) warning.classList.add('hidden');
     return false;
   }
 }
 
-// ===== КАЛЕНДАРЬ =====
+// ===== CALENDAR =====
 const picker = new Litepicker({
-  element: document.getElementById('datepicker'),
+  element: $('datepicker'),
   format: 'YYYY-MM-DD',
   minDate: new Date(),
   setup: (picker) => {
     picker.on('selected', () => {
-      selectedTimeStart = null; 
+      selectedTimeStart = null;
       renderTimeSlots();
-      showDateWarningIfNeeded();
       updatePayButtonState();
     });
   }
 });
 
-// ===== ВРЕМЯ =====
+// ===== TIME =====
 function renderTimeSlots() {
-  const container = document.getElementById('time-slots');
-  const display = document.getElementById('selected-time-display');
+  const container = $('time-slots');
+  const display = $('selected-time-display');
 
-  if(!container) return;
+  if (!container) return;
+
   container.innerHTML = '';
-  
-  const date = document.getElementById('datepicker').value;
+  const date = $('datepicker')?.value;
+
   if (!date) return;
 
-  const startHour = 9;
-  const endHour = 20; 
-  const bookedToday = bookedSlots[date] || [];
-
-  for (let hour = startHour; hour <= endHour; hour++) {
-    const timeLabel = `${hour.toString().padStart(2, '0')}:00`;
-    const isBooked = bookedToday.includes(timeLabel);
-    const isSelected = selectedTimeStart === timeLabel;
+  for (let h = 9; h <= 20; h++) {
+    const time = `${h.toString().padStart(2, '0')}:00`;
 
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.textContent = `Starts at ${timeLabel}`;
-    btn.disabled = isBooked;
-    btn.className = `slot-btn ${isSelected ? 'slot-btn-selected' : ''}`;
+    btn.textContent = time;
 
     btn.onclick = () => {
-      selectedTimeStart = timeLabel;
+      selectedTimeStart = time;
+
+      if (display) display.textContent = `Selected: ${time}`;
+
       renderTimeSlots();
-
-      if(display) {
-        display.textContent = `Selected time: ${timeLabel}`;
-      }
-
       updatePayButtonState();
     };
 
@@ -129,61 +112,85 @@ function renderTimeSlots() {
   }
 }
 
-// ===== КНОПКА PAY =====
-document.getElementById('pay-button').addEventListener('click', async () => {
-  if (selectedServiceId === "") {
-    alert('Please select a service.');
-    return;
-  }
+// ===== PAY BUTTON =====
+const payBtn = $('pay-button');
 
-  if (showDateWarningIfNeeded()) return;
+if (payBtn) {
+  payBtn.addEventListener('click', async () => {
 
-  if (!selectedTimeStart) {
-    alert('Please select a time.');
-    return;
-  }
-
-  const form = document.getElementById('booking-form');
-  const requiredFields = form.querySelectorAll('[required]');
-  let valid = true;
-  
-  requiredFields.forEach(field => {
-    if (!field.value.trim()) {
-      field.classList.add('border-red-500');
-      valid = false;
-    } else {
-      field.classList.remove('border-red-500');
+    if (!selectedServiceId) {
+      alert('Select service');
+      return;
     }
+
+    if (showDateWarningIfNeeded()) return;
+
+    if (!selectedTimeStart) {
+      alert('Select time');
+      return;
+    }
+
+    if (currentPrice <= 0) {
+      alert('Price error');
+      return;
+    }
+
+    $('total-price').textContent = `Total: ${currentPrice} DKK`;
+
+    openModal();
+    await initStripePayment(currentPrice);
   });
+}
 
-  if (!valid) return;
+// ===== MODAL =====
+function openModal() {
+  $('payment-modal')?.classList.remove('hidden');
+}
 
-  document.getElementById('total-price').textContent = `Total: ${currentPrice} DKK`;
+function closeModal() {
+  $('payment-modal')?.classList.add('hidden');
+}
 
-  const payBtn = document.getElementById('pay-button');
-  payBtn.disabled = true;
-  payBtn.textContent = 'Loading...';
+// закрытие
+window.addEventListener('DOMContentLoaded', () => {
 
-  await initStripePayment(currentPrice);
+  const modal = $('payment-modal');
+  const closeBtn = $('close-modal');
+
+  if (closeBtn) {
+    closeBtn.onclick = closeModal;
+  }
+
+  if (modal) {
+    modal.addEventListener('click', closeModal);
+  }
+
+  const box = document.querySelector('.modal-box');
+  if (box) {
+    box.addEventListener('click', (e) => e.stopPropagation());
+  }
 });
 
-// ===== STRIPE (ТЕСТ) =====
+// ===== STRIPE =====
 async function initStripePayment(amount) {
 
-  document.getElementById('payment-modal').classList.remove('hidden');
+  if (!amount || amount <= 0) return;
 
   elements = stripe.elements();
 
+  if (cardElement) {
+    cardElement.unmount();
+  }
+
   cardElement = elements.create('card');
-  document.getElementById('card-element').innerHTML = '';
   cardElement.mount('#card-element');
 
-  const paymentForm = document.getElementById('payment-form');
+  const form = $('payment-form');
 
-  paymentForm.onsubmit = async (e) => {
+  form.onsubmit = async (e) => {
     e.preventDefault();
 
-    const btn = document.getElementById('submit-stripe');
+    const btn = $('submit-stripe');
     btn.disabled = true;
     btn.textContent = 'Processing...';
 
@@ -193,54 +200,26 @@ async function initStripePayment(amount) {
     });
 
     if (error) {
-      const errorDiv = document.getElementById('card-errors');
-      errorDiv.textContent = error.message;
-      errorDiv.classList.remove('hidden');
+      const err = $('card-errors');
+      err.textContent = error.message;
+      err.classList.remove('hidden');
 
       btn.disabled = false;
       btn.textContent = 'Pay Now';
     } else {
-      alert('✅ Payment successful (test)');
+      alert('✅ Payment success (test)');
       location.reload();
     }
   };
-
-  // вернуть кнопку
-  const payBtn = document.getElementById('pay-button');
-  if (payBtn) {
-    payBtn.disabled = false;
-    payBtn.textContent = 'Pay Now';
-  }
 }
 
-// ===== UI =====
+// ===== STATE =====
 function updatePayButtonState() {
-  const btn = document.getElementById('pay-button');
-  if (!btn) return;
+  if (!payBtn) return;
 
   if (selectedServiceId && selectedTimeStart && currentPrice > 0) {
-    btn.disabled = false;
+    payBtn.disabled = false;
   } else {
-    btn.disabled = true;
+    payBtn.disabled = true;
   }
 }
-
-// ===== DOM READY =====
-window.addEventListener('DOMContentLoaded', () => {
-
-  const closeBtn = document.getElementById('close-modal');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      document.getElementById('payment-modal').classList.add('hidden');
-    });
-  }
-
-  const modal = document.getElementById('payment-modal');
-
-if (modal) {
-  modal.addEventListener('click', () => {
-    modal.classList.add('hidden');
-  });
-}
-
-});
