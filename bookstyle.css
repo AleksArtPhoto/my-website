@@ -1,3 +1,6 @@
+/* ==========================================================================
+   ФИРМЕННЫЙ СТИЛЬ NORDIC ДЛЯ СТРАНИЦЫ БРОНИРОВАНИЯ
+   ========================================================================== */
 html, body {
   overflow-x: hidden;
   font-family: 'Josefin Sans', sans-serif;
@@ -9,10 +12,11 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
 }
 
+/* Кнопка в скандинавском стиле из вашего главного шаблона */
 .btn-nordic {
   background-color: #94a3b8;
   color: #ffffff;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
   display: inline-block;
   border: none;
@@ -25,7 +29,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
 
-/* Кнопки слотов времени */
+.btn-nordic:active {
+  transform: translateY(0);
+}
+
+/* Кнопки выбора времени съемки "Starts at..." */
 .slot-btn {
   font-family: 'Josefin Sans', sans-serif;
   padding: 12px;
@@ -38,15 +46,21 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.15s ease;
   color: #334155;
 }
+
 .slot-btn:hover:not(:disabled) {
   background: #f8fafc;
   border-color: #94a3b8;
 }
+
+/* Время, выбранное клиентом (становится фирменным темным сланцем) */
 .slot-btn-selected {
   background: #1e293b !important;
   color: #ffffff !important;
   border-color: #1e293b !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
+
+/* Забронированное кем-то время */
 .slot-btn:disabled {
   background: #f1f5f9;
   color: #cbd5e1;
@@ -54,9 +68,30 @@ h1, h2, h3, h4, h5, h6 {
   cursor: not-allowed;
 }
 
+/* Элементы формы при ошибке валидации */
 .border-red-500 {
   border-color: #ef4444 !important;
 }
+
+/* Стилизация iFrame контейнера платежей Stripe */
 #card-element {
   min-height: 44px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.01);
+}
+
+/* Интеграция выпадающего календаря под дизайн Aleks Art Photo */
+.litepicker {
+  font-family: 'Josefin Sans', sans-serif !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+}
+.litepicker .container__months .month-item .container__days .day-item.is-start-date,
+.litepicker .container__months .month-item .container__days .day-item.is-end-date {
+  background-color: #1e293b !important;
+}
+.litepicker .container__months .month-item .container__days .day-item:hover {
+  color: #1e293b !important;
+  box-shadow: inset 0 0 0 1px #94a3b8 !important;
 }
