@@ -236,12 +236,11 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   const modal = document.getElementById('payment-modal');
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-      }
-    });
-  }
+
+if (modal) {
+  modal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+}
 
 });
