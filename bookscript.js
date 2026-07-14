@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 // 1. Инициализация Stripe фронтенд SDK. (Замените pk_test_... на ваш ключ из ЛК Stripe)
 const stripe = Stripe('pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt'); 
 let elements;
@@ -243,7 +244,7 @@ async function initStripePayment(amount, formElement) {
 window.addEventListener('DOMContentLoaded', () => {
   updateServicesDropdown();
 
-  document.getElementById('payment-modal').classList.add('hidden');
+  document.getElementById('payment-modal').classList.add('modal-hidden');
   
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('status') === 'success') {
@@ -253,7 +254,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById('close-modal').addEventListener('click', () => {
-  document.getElementById('payment-modal').classList.add('hidden');
+  document.getElementById('payment-modal').classList.add('modal-hidden');
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -315,4 +316,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+});
 });
