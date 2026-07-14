@@ -1,6 +1,5 @@
-// 1. Инициализация Stripe фронтенд SDK. 
-// Замените pk_test_... на ваш личный ПУБЛИЧНЫЙ ключ из ЛК Stripe (начинается на pk_test_)
-const stripe = Stripe('pk_test_YOUR_PUBLIC_KEY_HERE'); 
+// ВНИМАНИЕ: Обязательно вставьте сюда ваш ПУБЛИЧНЫЙ ключ из ЛК Stripe (начинается на pk_test_)
+const stripe = Stripe('pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt'); 
 let elements;
 let cardElement;
 
@@ -8,16 +7,16 @@ let selectedServiceId = '';
 let selectedServiceName = '';
 let currentPrice = 0;
 let selectedTimeStart = null;
-const bookedSlots = {}; // Сюда бэкенд будет отдавать занятые часы, например: { '2026-07-15': ['12:00'] }
+const bookedSlots = {}; 
 
 const indSelect = document.getElementById('individual-select');
 const bizSelect = document.getElementById('business-select');
 
-// Логика для меню физлиц (Individuals)
+// Взаимоисключение меню физлиц
 if(indSelect) {
   indSelect.addEventListener('change', () => {
     if (indSelect.value !== "") {
-      if(bizSelect) bizSelect.value = ""; // Мгновенно сбрасываем бизнес-селект
+      if(bizSelect) bizSelect.value = ""; 
       const option = indSelect.options[indSelect.selectedIndex];
       currentPrice = parseInt(option.dataset.price || 0);
       selectedServiceId = indSelect.value;
@@ -29,11 +28,11 @@ if(indSelect) {
   });
 }
 
-// Логика для бизнес-меню (Business)
+// Взаимоисключение бизнес-меню
 if(bizSelect) {
   bizSelect.addEventListener('change', () => {
     if (bizSelect.value !== "") {
-      if(indSelect) indSelect.value = ""; // Мгновенно сбрасываем приватный селект
+      if(indSelect) indSelect.value = ""; 
       const option = bizSelect.options[bizSelect.selectedIndex];
       currentPrice = parseInt(option.dataset.price || 0);
       selectedServiceId = bizSelect.value;
@@ -70,7 +69,7 @@ function showDateWarningIfNeeded() {
   }
 }
 
-// Календарь Litepicker
+// Инициализация календаря Litepicker
 const picker = new Litepicker({
   element: document.getElementById('datepicker'),
   format: 'YYYY-MM-DD',
@@ -84,7 +83,6 @@ const picker = new Litepicker({
   }
 });
 
-// Генерация кнопок времени съемки
 function renderTimeSlots() {
   const timeSlotsContainer = document.getElementById('time-slots');
   if(!timeSlotsContainer) return;
@@ -116,7 +114,6 @@ function renderTimeSlots() {
   }
 }
 
-// Обработка кнопки "Pay and Book"
 document.getElementById('pay-button').addEventListener('click', async () => {
   if (selectedServiceId === "") {
     alert('Please select a service from either Individuals or Business menu.');
@@ -152,7 +149,6 @@ document.getElementById('pay-button').addEventListener('click', async () => {
   await initStripePayment(currentPrice, form);
 });
 
-// Отправка запроса на ваш бэкенд в Render
 async function initStripePayment(amount, formElement) {
   const formData = new FormData(formElement);
   const date = document.getElementById('datepicker').value;
@@ -178,7 +174,7 @@ async function initStripePayment(amount, formElement) {
       body: JSON.stringify(bookingData)
     });
     
-    if (!response.ok) throw new Error('Backend server error');
+    if (!response.ok) throw new Error('Backend error');
 
     const { clientSecret } = await response.json();
     
@@ -214,7 +210,7 @@ async function initStripePayment(amount, formElement) {
 
   } catch (err) {
     console.error('Connection error:', err);
-    alert('Could not connect to the backend server. Please verify that your Render service is active.');
+    alert('Could not connect to the backend server.');
   } finally {
     const payBtn = document.getElementById('pay-button');
     payBtn.disabled = false;
@@ -225,7 +221,7 @@ async function initStripePayment(amount, formElement) {
 window.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('status') === 'success') {
-    alert('🎉 Success! Your payment has been received and your session is successfully booked. Check your email!');
+    alert('🎉 Success! Check your email for details.');
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 });
