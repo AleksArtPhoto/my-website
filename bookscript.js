@@ -25,6 +25,7 @@ if(indSelect) {
       resetSelection();
     }
     updatePriceDisplay();
+    updatePayButtonState();
   });
 }
 
@@ -41,6 +42,7 @@ if(bizSelect) {
       resetSelection();
     }
     updatePriceDisplay();
+    updatePayButtonState();
   });
 }
 
@@ -85,6 +87,8 @@ const picker = new Litepicker({
 
 function renderTimeSlots() {
   const timeSlotsContainer = document.getElementById('time-slots');
+  const display = document.getElementById('selected-time-display');
+
   if(!timeSlotsContainer) return;
   timeSlotsContainer.innerHTML = '';
   
@@ -109,7 +113,15 @@ function renderTimeSlots() {
     btn.onclick = () => {
       selectedTimeStart = timeLabel;
       renderTimeSlots();
+
+      // 👇 НОВОЕ: показываем выбранное время
+      if(display) {
+        display.textContent = `Selected time: ${timeLabel}`;
+      }
+
+      updatePayButtonState(); // 👈 активируем кнопку
     };
+
     timeSlotsContainer.appendChild(btn);
   }
 }
@@ -229,3 +241,14 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('close-modal').addEventListener('click', () => {
   document.getElementById('payment-modal').classList.add('hidden');
 });
+function updatePayButtonState() {
+  const btn = document.getElementById('pay-button');
+  if (!btn) return;
+
+  if (selectedServiceId && selectedTimeStart && currentPrice > 0) {
+    btn.disabled = false;
+  } else {
+    btn.disabled = true;
+  }
+}
+
