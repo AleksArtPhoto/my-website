@@ -162,72 +162,43 @@ document.getElementById('pay-button').addEventListener('click', async () => {
 });
 
 async function initStripePayment(amount, formElement) {
-  const formData = new FormData(formElement);
-  const date = document.getElementById('datepicker').value;
-  
-  const bookingData = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    phone: formData.get('phone'),
-    location: formData.get('location'),
-    comment: formData.get('comment'),
-    serviceId: selectedServiceId,
-    serviceName: selectedServiceName,
-    isGiftCertificate: document.getElementById('gift-certificate').checked,
-    date: date,
-    startTime: selectedTimeStart,
-    amount: amount
-  };
+  // ⚠️ ВРЕМЕННЫЙ ТЕСТ БЕЗ BACKEND
 
-  try {
-    const response = await fetch('https://onrender.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(bookingData)
+  document.getElementById('payment-modal').classList.remove('hidden');
+
+  elements = stripe.elements();
+
+  cardElement = elements.create('card');
+  document.getElementById('card-element').innerHTML = '';
+  cardElement.mount('#card-element');
+
+  const paymentForm = document.getElementById('payment-form');
+
+  paymentForm.onsubmit = async (e) => {
+    e.preventDefault();
+
+    const btn = document.getElementById('submit-stripe');
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+
+    // 🔥 тестовая карта Stripe
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
     });
-    
-    if (!response.ok) throw new Error('Backend error');
 
-    const { clientSecret } = await response.json();
-    
-    document.getElementById('payment-modal').classList.remove('hidden');
-    elements = stripe.elements({ clientSecret });
-    
-    cardElement = elements.create('payment');
-    document.getElementById('card-element').innerHTML = ''; 
-    cardElement.mount('#card-element');
+    if (error) {
+      const errorDiv = document.getElementById('card-errors');
+      errorDiv.textContent = error.message;
+      errorDiv.classList.remove('hidden');
 
-    const paymentForm = document.getElementById('payment-form');
-    paymentForm.onsubmit = async (e) => {
-      e.preventDefault();
-      document.getElementById('submit-stripe').disabled = true;
-      document.getElementById('submit-stripe').textContent = 'Processing...';
-
-      const { error } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: window.location.href + '?status=success',
-          receipt_email: bookingData.email
-        }
-      });
-
-      if (error) {
-        const errorDiv = document.getElementById('card-errors');
-        errorDiv.textContent = error.message;
-        errorDiv.classList.remove('hidden');
-        document.getElementById('submit-stripe').disabled = false;
-        document.getElementById('submit-stripe').textContent = 'Pay Now';
-      }
-    };
-
-  } catch (err) {
-    console.error('Connection error:', err);
-    alert('Could not connect to the backend server.');
-  } finally {
-    const payBtn = document.getElementById('pay-button');
-    payBtn.disabled = false;
-    payBtn.textContent = 'Pay and Book';
-  }
+      btn.disabled = false;
+      btn.textContent = 'Pay Now';
+    } else {
+      alert('✅ Payment simulated successfully!');
+      location.reload();
+    }
+  };
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -238,9 +209,13 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-document.getElementById('close-modal').addEventListener('click', () => {
-  document.getElementById('payment-modal').classList.add('hidden');
-});
+const closeBtn = document.getElementById('close-modal');
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    document.getElementById('payment-modal').classList.add('hidden');
+  });
+}
 function updatePayButtonState() {
   const btn = document.getElementById('pay-button');
   if (!btn) return;
@@ -250,5 +225,15 @@ function updatePayButtonState() {
   } else {
     btn.disabled = true;
   }
+}
+
+const modal = document.getElementById('payment-modal');
+
+if (modal) {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
 }
 
