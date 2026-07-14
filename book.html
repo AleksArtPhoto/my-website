@@ -142,25 +142,33 @@
   </div>
 
   <!-- Модалка Stripe -->
-  <div id="payment-modal" class="modal-overlay hidden">
-    <div onclick="event.stopPropagation()">
-    <div class="modal-box">
-      <button id="close-modal" class="modal-close-btn">&times;</button>
-      <h2 class="modal-title">Confirm and Pay</h2>
-      <p id="total-price" class="modal-price">Total: 0 DKK</p>
-      
-      <div id="payment-request-button" class="hidden"></div>
-      <div class="nordic-divider"><span>or pay with card</span></div>
+<div id="payment-modal" class="modal-overlay hidden">
+  
+  <div class="modal-box" onclick="event.stopPropagation()">
+    
+    <button id="close-modal" class="modal-close-btn">&times;</button>
+    
+    <h2 class="modal-title">Confirm and Pay</h2>
+    <p id="total-price" class="modal-price">Total: 0 DKK</p>
 
-      <form id="payment-form">
-        <div id="card-element"></div>
-        <div id="card-errors" class="text-error hidden" role="alert"></div>
-        <button type="submit" id="submit-stripe" class="btn-nordic m-top-20">
-          Pay Now
-        </button>
-      </form>
+    <div id="payment-request-button" class="hidden"></div>
+
+    <div class="nordic-divider">
+      <span>or pay with card</span>
     </div>
+
+    <form id="payment-form">
+      <div id="card-element"></div>
+      <div id="card-errors" class="text-error hidden" role="alert"></div>
+
+      <button type="submit" id="submit-stripe" class="btn-nordic m-top-20">
+        Pay Now
+      </button>
+    </form>
+
   </div>
+
+</div>
 
   <script src="https://jsdelivr.net"></script>
   <script src="bookscript.js"></script>
