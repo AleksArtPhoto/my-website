@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Page - Aleks Art Photo</title>
   
-  <!-- Подключение шрифтов -->
+  <!-- Шрифты вашего основного стиля -->
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Библиотеки -->
+  <!-- Внешние библиотеки -->
   <link href="https://jsdelivr.net" rel="stylesheet">
   <link rel="stylesheet" href="https://jsdelivr.net" />
   <script src="https://stripe.com"></script>
   
-  <!-- Ваш личный файл стилей -->
+  <!-- Ваш фирменный файл стилей -->
   <link rel="stylesheet" href="bookstyle.css" />
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
+  <!-- Шапка сайта в стиле Aleks Art Photo -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="text-2xl font-bold flex items-center space-x-3">
@@ -35,14 +36,15 @@
     </div>
   </header>
 
+  <!-- Главная карточка бронирования -->
   <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-slate-100 mt-8 mb-12">
     <h1 class="text-3xl font-bold mb-8 text-center text-slate-900 tracking-tight">Book a Photo Session</h1>
 
-    <!-- БЛОК ВЫБОРА УСЛУГ (Два раздельных меню) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <!-- Блок выбора услуг: две красивые независимые колонки -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
       <div>
         <label for="individual-select" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Services for Individuals</label>
-        <select id="individual-select" class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors">
+        <select id="individual-select" class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors select-input">
           <option value="" selected>-- Not selected --</option>
           <option value="mini" data-price="2500">Mini Session — 2 500 DKK</option>
           <option value="standard" data-price="4500">Standard Session — 4 500 DKK</option>
@@ -63,26 +65,26 @@
       </div>
       <div>
         <label for="business-select" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Services for Business</label>
-        <select id="business-select" class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors">
+        <select id="business-select" class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors select-input">
           <option value="" selected>-- Not selected --</option>
           <option value="ecom_mini" data-price="3000">E-commerce Pack Mini — 3 000 DKK</option>
           <option value="comm_signature" data-price="6500">Commercial Signature Session — 6 500 DKK</option>
-          <option value="premium_exp" data-price="9500">Premium Experience — from 9 500 DKK</option>
+          <option value="premium_exp" data-price="9500">Premium Experience — от 9 500 DKK</option>
           <option value="prod_basic" data-price="2800">Product Basic — 2 800 DKK</option>
           <option value="prod_brand" data-price="5500">Product Branding — 5 500 DKK</option>
-          <option value="prod_camp" data-price="9500">Product Campaign — from 9 500 DKK</option>
+          <option value="prod_camp" data-price="9500">Product Campaign — 9 500 до 12 000 DKK</option>
           <option value="interior_ess" data-price="3500">Interior Essential — 3 500 DKK</option>
           <option value="interior_std" data-price="5500">Interior Standard — 5 500 DKK</option>
-          <option value="interior_prem" data-price="8500">Interior Premium — from 8 500 DKK</option>
+          <option value="interior_prem" data-price="8500">Interior Premium — 8 500 до 10 500 DKK</option>
           <option value="social_clip" data-price="3500">Social Clip — 3 500 DKK</option>
           <option value="social_plus" data-price="5500">Social Plus — 5 500 DKK</option>
           <option value="brand_intro" data-price="7500">Brand Intro Video — 7 500 DKK</option>
           <option value="biz_promo" data-price="9500">Business Promo — 9 500 DKK</option>
-          <option value="comm_pkg" data-price="15000">Commercial Package — from 15 000 DKK</option>
+          <option value="comm_pkg" data-price="15000">Commercial Package — 15 000 до 20 000 DKK</option>
           <option value="property_vid" data-price="4500">Property Video — 4 500 DKK</option>
-          <option value="logo_anim" data-price="1500">Logo Animation — from 1 500 DKK</option>
+          <option value="logo_anim" data-price="1500">Logo Animation — 1 500 до 2 500 DKK</option>
           <option value="motion_basic" data-price="1800">Motion Graphics Basic — 1 800 DKK</option>
-          <option value="motion_ctx" data-price="2500">Context Motion Graphics — from 2 500 DKK</option>
+          <option value="motion_ctx" data-price="2500">Context Motion Graphics — 2 500 до 4 000 DKK</option>
           <option value="motion_upgrade" data-price="3500">Social Motion Upgrade — 3 500 DKK</option>
         </select>
       </div>
@@ -94,22 +96,22 @@
       <label for="gift-certificate" class="font-semibold text-slate-700 cursor-pointer select-none">Buy as a Gift Certificate</label>
     </div>
 
-    <!-- Календарь -->
+    <!-- Поле Выбора Даты (Календарь) -->
     <div class="mb-6">
       <label for="datepicker" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select a date *</label>
       <input type="text" id="datepicker" readonly placeholder="Click to open calendar..." class="border border-slate-200 rounded-md p-3 w-full bg-white cursor-pointer focus:border-slate-400 outline-none transition-colors" required />
       <div id="date-warning" class="text-rose-500 text-sm mt-1 hidden">Please select a date first.</div>
     </div>
 
-    <!-- Слоты времени (Время начала съемки) -->
+    <!-- Красивая сетка слотов времени -->
     <div class="mb-8">
       <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select start time *</label>
       <div id="time-slots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-        <!-- Кнопки времени сгенерируются скриптом -->
+        <!-- Кнопки сгенерируются автоматически при выборе даты -->
       </div>
     </div>
 
-    <!-- Форма данных клиента -->
+    <!-- Форма отправки данных -->
     <form id="booking-form" class="space-y-4 border-t border-slate-100 pt-6">
       <div>
         <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name *</label>
@@ -134,14 +136,12 @@
       
       <div class="text-xl font-bold my-6 text-right text-slate-900 tracking-tight" id="live-price-display">Current Price: 0 DKK</div>
       
+      <!-- Ваша фирменная скандинавская кнопка -->
       <button type="button" id="pay-button" class="w-full btn-nordic py-4 rounded-md font-bold text-center tracking-wider uppercase cursor-pointer">
         Pay and Book
       </button>
     </form>
   </div>
 
-  <!-- Модальное окно Stripe -->
+  <!-- Модальное окно платежной системы Stripe -->
   <div id="payment-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-lg p-6 relative w-full max-w-md shadow-xl border border-slate-100">
-      <button id="close-modal" class="absolute top-3 right-3 text-3xl text-slate-400 hover:text-slate-800 transition-colors">&times;</button>
-      <h2 class="text-xl font-bold mb-1 text-slate-900">Confirm and Pay</h2>
