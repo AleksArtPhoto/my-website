@@ -6,15 +6,16 @@
   <title>Booking Page - Aleks Art Photo</title>
   
   <!-- Шрифты -->
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Платежная система Stripe SDK -->
-  <script src="https://stripe.com"></script>
+  <script src="https://js.stripe.com/v3/"></script>
   
   <!-- Стили календаря Litepicker -->
-  <link rel="stylesheet" href="https://jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"/>
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
   
   <!-- Ваш файл стилей -->
   <link rel="stylesheet" href="bookstyle.css" />
@@ -106,6 +107,7 @@
     <div class="form-group">
       <label>Select start time *</label>
       <div id="time-slots" class="slots-container"></div>
+      <div id="selected-time-display" style="margin-top:10px; font-weight:600;"></div>
     </div>
 
     <!-- Форма контактов -->
