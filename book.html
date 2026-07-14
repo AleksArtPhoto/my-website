@@ -5,46 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Page - Aleks Art Photo</title>
   
-  <!-- Шрифты вашего основного стиля -->
+  <!-- Шрифты -->
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Внешние библиотеки -->
-  <link href="https://jsdelivr.net" rel="stylesheet">
-  <link rel="stylesheet" href="https://jsdelivr.net" />
+  <!-- Платежная система Stripe SDK -->
   <script src="https://stripe.com"></script>
   
-  <!-- Ваш фирменный файл стилей -->
+  <!-- Стили календаря Litepicker -->
+  <link rel="stylesheet" href="https://jsdelivr.net" />
+  
+  <!-- Ваш файл стилей -->
   <link rel="stylesheet" href="bookstyle.css" />
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="nordic-body">
 
-  <!-- Шапка сайта в стиле Aleks Art Photo -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold flex items-center space-x-3">
-        <img src="logo/logo1.png" width="50" height="50" alt="logo" class="object-contain">
-        <span class="tracking-wide">Aleks Art Photo</span>
+  <header class="main-header">
+    <div class="header-wrap">
+      <div class="logo-area">
+        <img src="logo/logo1.png" width="50" height="50" alt="logo">
+        <span class="brand-name">Aleks Art Photo</span>
       </div>
-      <nav class="space-x-6">
-        <a href="home.html" class="hover:text-slate-500 transition-colors font-medium">Home</a>
-        <a href="portfolio.html" class="hover:text-slate-500 transition-colors font-medium">Portfolio</a>
-        <a href="services.html" class="hover:text-slate-500 transition-colors font-medium">Services</a>
-        <a href="home.html#contact" class="hover:text-slate-500 transition-colors font-medium">Contacts</a>
+      <nav class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="home.html#contact">Contacts</a>
       </nav>
     </div>
   </header>
 
-  <!-- Главная карточка бронирования -->
-  <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-slate-100 mt-8 mb-12">
-    <h1 class="text-3xl font-bold mb-8 text-center text-slate-900 tracking-tight">Book a Photo Session</h1>
+  <div class="booking-card">
+    <h1 class="card-title">Book a Photo Session</h1>
 
-    <!-- Блок выбора услуг: две красивые независимые колонки -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-      <div>
-        <label for="individual-select" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Services for Individuals</label>
-        <select id="individual-select" class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors select-input">
+    <!-- БЛОК ВЫБОРА УСЛУГ -->
+    <div class="services-grid">
+      <div class="select-wrapper">
+        <label for="individual-select">Services for Individuals</label>
+        <select id="individual-select" class="form-select">
           <option value="" selected>-- Not selected --</option>
           <option value="mini" data-price="2500">Mini Session — 2 500 DKK</option>
           <option value="standard" data-price="4500">Standard Session — 4 500 DKK</option>
@@ -57,91 +56,110 @@
           <option value="family" data-price="8500">Family Documentary — 8 500 DKK</option>
           <option value="filmlook" data-price="3500">Digital Film Look — 3 500 DKK</option>
           <option value="proedit" data-price="1500">Pro Edit (Your Photos) — 1 500 DKK</option>
-          <option value="fineart" data-price="450">Fine Art Retouch — 450 DKK/шт.</option>
-          <option value="restoration" data-price="600">Photo Restoration — 600 DKK/шт.</option>
+          <option value="fineart" data-price="450">Fine Art Retouch — 450 DKK</option>
+          <option value="restoration" data-price="600">Photo Restoration — 600 DKK</option>
           <option value="workshop" data-price="2500">Camera Photo Workshop — 2 500 DKK</option>
           <option value="review" data-price="1200">Portfolio Review — 1 200 DKK</option>
         </select>
       </div>
-      <div>
-        <label for="business-select" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Services for Business</label>
-        <select id="business-select" class="w-full border border-slate-200 p-3 rounded-md bg-white focus:border-slate-400 outline-none transition-colors select-input">
+      <div class="select-wrapper">
+        <label for="business-select">Services for Business</label>
+        <select id="business-select" class="form-select">
           <option value="" selected>-- Not selected --</option>
           <option value="ecom_mini" data-price="3000">E-commerce Pack Mini — 3 000 DKK</option>
           <option value="comm_signature" data-price="6500">Commercial Signature Session — 6 500 DKK</option>
-          <option value="premium_exp" data-price="9500">Premium Experience — от 9 500 DKK</option>
+          <option value="premium_exp" data-price="9500">Premium Experience — from 9 500 DKK</option>
           <option value="prod_basic" data-price="2800">Product Basic — 2 800 DKK</option>
           <option value="prod_brand" data-price="5500">Product Branding — 5 500 DKK</option>
-          <option value="prod_camp" data-price="9500">Product Campaign — 9 500 до 12 000 DKK</option>
+          <option value="prod_camp" data-price="9500">Product Campaign — from 9 500 DKK</option>
           <option value="interior_ess" data-price="3500">Interior Essential — 3 500 DKK</option>
           <option value="interior_std" data-price="5500">Interior Standard — 5 500 DKK</option>
-          <option value="interior_prem" data-price="8500">Interior Premium — 8 500 до 10 500 DKK</option>
+          <option value="interior_prem" data-price="8500">Interior Premium — from 8 500 DKK</option>
           <option value="social_clip" data-price="3500">Social Clip — 3 500 DKK</option>
           <option value="social_plus" data-price="5500">Social Plus — 5 500 DKK</option>
           <option value="brand_intro" data-price="7500">Brand Intro Video — 7 500 DKK</option>
           <option value="biz_promo" data-price="9500">Business Promo — 9 500 DKK</option>
-          <option value="comm_pkg" data-price="15000">Commercial Package — 15 000 до 20 000 DKK</option>
+          <option value="comm_pkg" data-price="15000">Commercial Package — from 15 000 DKK</option>
           <option value="property_vid" data-price="4500">Property Video — 4 500 DKK</option>
-          <option value="logo_anim" data-price="1500">Logo Animation — 1 500 до 2 500 DKK</option>
+          <option value="logo_anim" data-price="1500">Logo Animation — from 1 500 DKK</option>
           <option value="motion_basic" data-price="1800">Motion Graphics Basic — 1 800 DKK</option>
-          <option value="motion_ctx" data-price="2500">Context Motion Graphics — 2 500 до 4 000 DKK</option>
+          <option value="motion_ctx" data-price="2500">Context Motion Graphics — from 2 500 DKK</option>
           <option value="motion_upgrade" data-price="3500">Social Motion Upgrade — 3 500 DKK</option>
         </select>
       </div>
     </div>
 
-    <!-- Опция: Подарочный сертификат -->
-    <div class="mb-6 bg-slate-50 p-4 rounded-md border border-slate-100 flex items-center">
-      <input type="checkbox" id="gift-certificate" name="gift_certificate" class="w-4 h-4 text-slate-700 border-slate-300 rounded focus:ring-slate-400 mr-3 cursor-pointer" />
-      <label for="gift-certificate" class="font-semibold text-slate-700 cursor-pointer select-none">Buy as a Gift Certificate</label>
+    <!-- Подарочный сертификат -->
+    <div class="gift-card-option">
+      <input type="checkbox" id="gift-certificate">
+      <label for="gift-certificate" class="checkbox-label">Buy as a Gift Certificate</label>
     </div>
 
-    <!-- Поле Выбора Даты (Календарь) -->
-    <div class="mb-6">
-      <label for="datepicker" class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select a date *</label>
-      <input type="text" id="datepicker" readonly placeholder="Click to open calendar..." class="border border-slate-200 rounded-md p-3 w-full bg-white cursor-pointer focus:border-slate-400 outline-none transition-colors" required />
-      <div id="date-warning" class="text-rose-500 text-sm mt-1 hidden">Please select a date first.</div>
+    <!-- Календарь -->
+    <div class="form-group">
+      <label for="datepicker">Select a date *</label>
+      <input type="text" id="datepicker" readonly placeholder="Click to choose a date..." class="form-input pointer" required />
+      <div id="date-warning" class="text-error hidden">Please select a date first.</div>
     </div>
 
-    <!-- Красивая сетка слотов времени -->
-    <div class="mb-8">
-      <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-2">Select start time *</label>
-      <div id="time-slots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-        <!-- Кнопки сгенерируются автоматически при выборе даты -->
-      </div>
+    <!-- Слоты времени -->
+    <div class="form-group">
+      <label>Select start time *</label>
+      <div id="time-slots" class="slots-container"></div>
     </div>
 
-    <!-- Форма отправки данных -->
-    <form id="booking-form" class="space-y-4 border-t border-slate-100 pt-6">
-      <div>
-        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name *</label>
-        <input type="text" name="name" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
+    <!-- Форма контактов -->
+    <form id="booking-form" class="contacts-form">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" name="name" class="form-input" required />
       </div>
-      <div>
-        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Email *</label>
-        <input type="email" name="email" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" name="email" class="form-input" required />
       </div>
-      <div>
-        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Phone *</label>
-        <input type="tel" name="phone" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
+      <div class="form-group">
+        <label>Phone *</label>
+        <input type="tel" name="phone" class="form-input" required />
       </div>
-      <div>
-        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Location / Address of the Shoot *</label>
-        <input type="text" name="location" required class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors" />
+      <div class="form-group">
+        <label>Location / Address of the Shoot *</label>
+        <input type="text" name="location" class="form-input" required />
       </div>
-      <div>
-        <label class="block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1">Comment (optional, max 500 chars)</label>
-        <textarea name="comment" maxlength="500" rows="3" class="w-full border border-slate-200 p-3 rounded-md focus:border-slate-400 outline-none transition-colors"></textarea>
+      <div class="form-group">
+        <label>Comment (optional, max 500 chars)</label>
+        <textarea name="comment" maxlength="500" rows="3" class="form-input"></textarea>
       </div>
       
-      <div class="text-xl font-bold my-6 text-right text-slate-900 tracking-tight" id="live-price-display">Current Price: 0 DKK</div>
+      <div class="price-display" id="live-price-display">Current Price: 0 DKK</div>
       
-      <!-- Ваша фирменная скандинавская кнопка -->
-      <button type="button" id="pay-button" class="w-full btn-nordic py-4 rounded-md font-bold text-center tracking-wider uppercase cursor-pointer">
+      <button type="button" id="pay-button" class="btn-nordic">
         Pay and Book
       </button>
     </form>
   </div>
 
-  <!-- Модальное окно платежной системы Stripe -->
-  <div id="payment-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+  <!-- Модалка Stripe -->
+  <div id="payment-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <button id="close-modal" class="modal-close-btn">&times;</button>
+      <h2 class="modal-title">Confirm and Pay</h2>
+      <p id="total-price" class="modal-price">Total: 0 DKK</p>
+      
+      <div id="payment-request-button" class="hidden"></div>
+      <div class="nordic-divider"><span>or pay with card</span></div>
+
+      <form id="payment-form">
+        <div id="card-element"></div>
+        <div id="card-errors" class="text-error hidden" role="alert"></div>
+        <button type="submit" id="submit-stripe" class="btn-nordic m-top-20">
+          Pay Now
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://jsdelivr.net"></script>
+  <script src="bookscript.js"></script>
+</body>
+</html>
