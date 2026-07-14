@@ -1,6 +1,4 @@
-/* ==========================================================================
-   ФИРМЕННЫЙ СКАНДИНАВСКИЙ СТИЛЬ — ALEKS ART PHOTO
-   ========================================================================== */
+/* === БАЗА === */
 html, body {
   background-color: #f8fafc;
   color: #1e293b;
@@ -8,9 +6,10 @@ html, body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  scrollbar-gutter: stable;
 }
 
-/* Навигация */
+/* === НАВИГАЦИЯ === */
 header {
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -18,242 +17,145 @@ header {
   top: 0;
   z-index: 50;
 }
-header .max-w-7xl {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-/* Стили ссылок навигации */
-.nav-link {
-  font-size: 1.125rem;
-  color: #1f2937;
-  transition: color 0.3s ease;
-  font-weight: 500;
-}
 
-.nav-link:hover {
-  color: #2563eb;
-}
-
-/* Главная карточка формы */
+/* === КАРТОЧКА === */
 .main-card {
-  max-w-3xl: 768px;
   max-width: 700px;
   margin: 40px auto;
   background: #ffffff;
   padding: 35px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
   border: 1px solid #f1f5f9;
 }
-h1 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 30px;
-  letter-spacing: -0.03em;
+
+/* === ПЕРЕКЛЮЧАТЕЛЬ (ФИКС) === */
+.toggle-wrapper {
+  position: relative; /* ВАЖНО */
+  display: flex;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
 }
 
-/* Фирменный переключатель таблетка ползунок B2C / B2B */
 .toggle-selection-bg {
   position: absolute;
-  height: 40px;
-  width: 120px; /* Ширина таблетки */
+  height: 100%;
+  width: 50%;
+  background: #1e293b;
   border-radius: 9999px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
   z-index: 1;
 }
 
-/* Кнопки текста */
 .toggle-btn {
-  position: relative;
-  z-index: 10;
   flex: 1;
   text-align: center;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.2em; /* Отступы между буквами */
-  transition: color 0.3s ease;
-  user-select: none;
+  letter-spacing: 0.2em;
+  padding: 12px 0;
+  cursor: pointer;
+  z-index: 2;
+  color: #1e293b;
 }
-html {
-  scrollbar-gutter: stable;
+
+.toggle-btn.active {
+  color: #ffffff;
 }
-}
-/* Поля ввода и селекты */
-label {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #475569;
-  margin-bottom: 8px;
-}
-select, input[type="text"], input[type="email"], input[type="tel"], textarea {
+
+/* === INPUTS === */
+input, select, textarea {
   width: 100%;
-  box-sizing: border-box;
   border: 1px solid #cbd5e1;
   padding: 12px;
   border-radius: 6px;
-  background: #ffffff;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #94a3b8;
   outline: none;
-  transition: border-color 0.2s ease;
-  margin-bottom: 20px;
-}
-select:focus, input:focus, textarea:focus {
-  border-color: #94a3b8;
 }
 
-/* Чекбокс сертификата */
-.checkbox-card {
-  background: #f8fafc;
-  padding: 16px;
-  border-radius: 6px;
-  border: 1px solid #f1f5f9;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.checkbox-card label {
-  margin-bottom: 0;
-  text-transform: none;
-  font-size: 15px;
-  color: #334155;
-}
-
-/* Сетка кнопок времени */
-.grid-slots {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-/* Кнопки времени (Ваши фирменные стили) */
-.slot-btn {
-  font-family: 'Josefin Sans', sans-serif;
-  padding: 12px;
-  font-size: 13px;
-  font-weight: 600;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  color: #334155;
-}
-.slot-btn:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #94a3b8;
-}
-
-/* Кнопка в активном скандинавском стиле при выборе времени */
-.slot-btn-selected {
-  background: #1e293b !important;
-  color: #ffffff !important;
-  border-color: #1e293b !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.slot-btn:disabled {
-  background: #f1f5f9;
-  color: #cbd5e1;
-  border-color: #e2e8f0;
-  cursor: not-allowed;
-}
-
-/* Фирменная Кнопка Отправки (btn-nordic из вашего стиля) */
+/* === КНОПКИ === */
 .btn-nordic {
   width: 100%;
   background-color: #94a3b8;
   color: #ffffff;
   padding: 16px;
-  font-size: 14px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
 }
+
 .btn-nordic:hover {
   background-color: #1e293b;
-  transform: translateY(-2px);
 }
 
-/* Ошибки валидации */
-.border-red-500 {
-  border-color: #ef4444 !important;
-}
-.text-rose-500 {
-  color: #ef4444;
-}
-.modal-hidden {
-  display: none;
+/* === СЛОТЫ === */
+.grid-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
 }
 
-/* Модальное окно Stripe */
-.fixed-modal {
+.slot-btn {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.slot-btn-selected {
+  background: #1e293b;
+  color: #fff;
+}
+
+/* === МОДАЛКА (ПОЛНЫЙ ФИКС) === */
+.modal {
   position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
-  padding: 15px;
+
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
 }
+
+/* ОТКРЫТА */
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .modal-content {
   background: #ffffff;
   padding: 25px;
   border-radius: 8px;
   width: 100%;
   max-width: 400px;
-  position: relative;
-}
-.absolute { position: absolute; }
-.top-3 { top: 12px; }
-.right-3 { right: 12px; }
-
-/* --- АДАПТИВНОСТЬ --- */
-
-/* Планшеты */
-@media (min-width: 768px) {
-  .expect-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-/* Десктопы */
-@media (min-width: 1024px) {
-  .expect-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* КНОПКА ЗАКРЫТИЯ */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
-/* Навигация */
-.nav-link {
-  font-size: 1.125rem;
-  color: #1f2937;
-  transition: color 0.3s ease;
-  font-weight: 500;
-}
-
-.nav-link:hover {
-  color: #2563eb;
-}
-
-.nav-link-mobile {
-  font-size: 1.25rem;
-  font-weight: 600;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #f3f4f6;
+/* === ОШИБКИ === */
+.border-red-500 {
+  border-color: #ef4444 !important;
 }
