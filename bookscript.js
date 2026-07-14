@@ -1,5 +1,6 @@
-// ВНИМАНИЕ: Обязательно вставьте сюда ваш ПУБЛИЧНЫЙ ключ из ЛК Stripe (начинается на pk_test_)
+// Stripe
 const stripe = Stripe('pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt'); 
+
 let elements;
 let cardElement;
 
@@ -12,7 +13,7 @@ const bookedSlots = {};
 const indSelect = document.getElementById('individual-select');
 const bizSelect = document.getElementById('business-select');
 
-// Взаимоисключение меню физлиц
+// ===== ВЫБОР УСЛУГ =====
 if(indSelect) {
   indSelect.addEventListener('change', () => {
     if (indSelect.value !== "") {
@@ -29,7 +30,6 @@ if(indSelect) {
   });
 }
 
-// Взаимоисключение бизнес-меню
 if(bizSelect) {
   bizSelect.addEventListener('change', () => {
     if (bizSelect.value !== "") {
@@ -57,9 +57,11 @@ function updatePriceDisplay() {
   if(display) display.textContent = `Current Price: ${currentPrice} DKK`;
 }
 
+// ===== ПРОВЕРКА ДАТЫ =====
 function showDateWarningIfNeeded() {
   const dateField = document.getElementById('datepicker');
   const warning = document.getElementById('date-warning');
+
   if (!dateField || !dateField.value.trim()) {
     if(dateField) dateField.classList.add('border-red-500');
     if(warning) warning.classList.remove('hidden');
@@ -71,7 +73,7 @@ function showDateWarningIfNeeded() {
   }
 }
 
-// Инициализация календаря Litepicker
+// ===== КАЛЕНДАРЬ =====
 const picker = new Litepicker({
   element: document.getElementById('datepicker'),
   format: 'YYYY-MM-DD',
@@ -81,16 +83,18 @@ const picker = new Litepicker({
       selectedTimeStart = null; 
       renderTimeSlots();
       showDateWarningIfNeeded();
+      updatePayButtonState();
     });
   }
 });
 
+// ===== ВРЕМЯ =====
 function renderTimeSlots() {
-  const timeSlotsContainer = document.getElementById('time-slots');
+  const container = document.getElementById('time-slots');
   const display = document.getElementById('selected-time-display');
 
-  if(!timeSlotsContainer) return;
-  timeSlotsContainer.innerHTML = '';
+  if(!container) return;
+  container.innerHTML = '';
   
   const date = document.getElementById('datepicker').value;
   if (!date) return;
@@ -114,26 +118,28 @@ function renderTimeSlots() {
       selectedTimeStart = timeLabel;
       renderTimeSlots();
 
-      // 👇 НОВОЕ: показываем выбранное время
       if(display) {
         display.textContent = `Selected time: ${timeLabel}`;
       }
 
-      updatePayButtonState(); // 👈 активируем кнопку
+      updatePayButtonState();
     };
 
-    timeSlotsContainer.appendChild(btn);
+    container.appendChild(btn);
   }
 }
 
+// ===== КНОПКА PAY =====
 document.getElementById('pay-button').addEventListener('click', async () => {
   if (selectedServiceId === "") {
-    alert('Please select a service from either Individuals or Business menu.');
+    alert('Please select a service.');
     return;
   }
+
   if (showDateWarningIfNeeded()) return;
+
   if (!selectedTimeStart) {
-    alert('Please select a start time for your photoshoot.');
+    alert('Please select a time.');
     return;
   }
 
@@ -153,16 +159,16 @@ document.getElementById('pay-button').addEventListener('click', async () => {
   if (!valid) return;
 
   document.getElementById('total-price').textContent = `Total: ${currentPrice} DKK`;
-  
+
   const payBtn = document.getElementById('pay-button');
   payBtn.disabled = true;
-  payBtn.textContent = 'Connecting to server...';
+  payBtn.textContent = 'Loading...';
 
-  await initStripePayment(currentPrice, form);
+  await initStripePayment(currentPrice);
 });
 
-async function initStripePayment(amount, formElement) {
-  // ⚠️ ВРЕМЕННЫЙ ТЕСТ БЕЗ BACKEND
+// ===== STRIPE (ТЕСТ) =====
+async function initStripePayment(amount) {
 
   document.getElementById('payment-modal').classList.remove('hidden');
 
@@ -181,8 +187,7 @@ async function initStripePayment(amount, formElement) {
     btn.disabled = true;
     btn.textContent = 'Processing...';
 
-    // 🔥 тестовая карта Stripe
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
     });
@@ -195,27 +200,20 @@ async function initStripePayment(amount, formElement) {
       btn.disabled = false;
       btn.textContent = 'Pay Now';
     } else {
-      alert('✅ Payment simulated successfully!');
+      alert('✅ Payment successful (test)');
       location.reload();
     }
   };
-}
 
-window.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('status') === 'success') {
-    alert('🎉 Success! Check your email for details.');
-    window.history.replaceState({}, document.title, window.location.pathname);
+  // вернуть кнопку
+  const payBtn = document.getElementById('pay-button');
+  if (payBtn) {
+    payBtn.disabled = false;
+    payBtn.textContent = 'Pay Now';
   }
-});
-
-const closeBtn = document.getElementById('close-modal');
-
-if (closeBtn) {
-  closeBtn.addEventListener('click', () => {
-    document.getElementById('payment-modal').classList.add('hidden');
-  });
 }
+
+// ===== UI =====
 function updatePayButtonState() {
   const btn = document.getElementById('pay-button');
   if (!btn) return;
@@ -227,13 +225,23 @@ function updatePayButtonState() {
   }
 }
 
-const modal = document.getElementById('payment-modal');
+// ===== DOM READY =====
+window.addEventListener('DOMContentLoaded', () => {
 
-if (modal) {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.add('hidden');
-    }
-  });
-}
+  const closeBtn = document.getElementById('close-modal');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      document.getElementById('payment-modal').classList.add('hidden');
+    });
+  }
 
+  const modal = document.getElementById('payment-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  }
+
+});
