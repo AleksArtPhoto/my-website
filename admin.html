@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Aleks Art Photo Bookings</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
+  <link rel="stylesheet" href="admin.css" />
+
+  <script>
+    window.BOOKING_API_BASE = "https://YOUR-BACKEND-DOMAIN.example.com";
+  </script>
+</head>
+<body>
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div id="login-screen" class="login-screen">
+    <form id="login-form" class="login-box">
+      <h1>Admin Login</h1>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="login-username" class="form-input" required autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="login-password" class="form-input" required autocomplete="current-password" />
+      </div>
+      <div id="login-error" class="text-error hidden"></div>
+      <button type="submit" class="btn-nordic">Log In</button>
+    </form>
+  </div>
+
+  <!-- ===== ADMIN APP ===== -->
+  <div id="admin-app" class="admin-app hidden">
+    <header class="admin-header">
+      <span class="admin-title">Aleks Art Photo — Bookings Admin</span>
+      <div>
+        <button id="new-booking-btn" class="btn-small">+ New booking</button>
+        <button id="logout-btn" class="btn-small btn-ghost">Log out</button>
+      </div>
+    </header>
+
+    <div class="admin-layout">
+      <!-- LEFT: calendar + day slots -->
+      <div class="admin-panel">
+        <div class="form-group">
+          <label for="admin-datepicker">Date</label>
+          <input type="text" id="admin-datepicker" class="form-input pointer" readonly placeholder="Select a date" />
+        </div>
+
+        <div class="legend">
+          <span><i class="dot dot-green"></i> Paid (confirmed)</span>
+          <span><i class="dot dot-orange"></i> Pending B2B (unpaid, 48h hold)</span>
+          <span><i class="dot dot-red"></i> Blocked buffer</span>
+          <span><i class="dot dot-white"></i> Free</span>
+        </div>
+
+        <div id="admin-slots" class="admin-slots"></div>
+      </div>
+
+      <!-- RIGHT: booking details / editor -->
+      <div class="admin-panel">
+        <div id="no-selection" class="muted">Select a booking on the left to view or edit it, or click a free slot to create a new one.</div>
+
+        <form id="booking-editor" class="hidden">
+          <div class="form-group">
+            <label>Category</label>
+            <select id="edit-category" class="form-select">
+              <option value="individual">Individual (B2C)</option>
+              <option value="business">Business (B2B)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Service</label>
+            <select id="edit-service" class="form-select"></select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select id="edit-status" class="form-select">
+              <option value="confirmed">Confirmed (paid / green)</option>
+              <option value="pending_business">Pending B2B (unpaid / orange)</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="two-col">
+            <div class="form-group">
+              <label>Date</label>
+              <input type="text" id="edit-date" class="form-input" placeholder="YYYY-MM-DD" />
+            </div>
+            <div class="form-group">
+              <label>Time</label>
+              <input type="text" id="edit-time" class="form-input" placeholder="HH:00" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Price (DKK)</label>
+            <input type="number" id="edit-price" class="form-input" />
+          </div>
+
+          <div id="edit-customer-fields"></div>
+
+          <div class="form-group">
+            <label>Admin note (internal only)</label>
+            <textarea id="edit-note" class="form-input" rows="2"></textarea>
+          </div>
+
+          <div id="editor-error" class="text-error hidden"></div>
+          <div id="editor-success" class="text-success hidden"></div>
+
+          <div class="editor-buttons">
+            <button type="button" id="save-btn" class="btn-nordic">Save Changes</button>
+            <button type="button" id="resend-btn" class="btn-small">Resend Confirmation</button>
+            <button type="button" id="cancel-booking-btn" class="btn-small btn-danger">Cancel Booking</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
