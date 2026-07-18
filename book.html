@@ -4,21 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Page - Aleks Art Photo</title>
-  
+
   <!-- Шрифты -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
   <!-- Платежная система Stripe SDK -->
   <script src="https://js.stripe.com/v3/"></script>
-  
+
   <!-- Стили календаря Litepicker -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"/>
-<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
   <!-- Ваш файл стилей -->
   <link rel="stylesheet" href="bookstyle.css" />
+
+  <!-- Конфигурация: поменяйте на адрес вашего backend после деплоя -->
+  <script>
+    window.BOOKING_API_BASE = "https://YOUR-BACKEND-DOMAIN.example.com";
+    window.STRIPE_PUBLIC_KEY = "pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt";
+  </script>
 </head>
 <body class="nordic-body">
 
@@ -107,6 +113,7 @@
     <div class="form-group">
       <label>Select start time *</label>
       <div id="time-slots" class="slots-container"></div>
+      <div id="slots-loading" class="text-error hidden" style="color:#64748b;">Loading available times...</div>
       <div id="selected-time-display" style="margin-top:10px; font-weight:600;"></div>
     </div>
 
@@ -132,45 +139,37 @@
         <label>Comment (optional, max 500 chars)</label>
         <textarea name="comment" maxlength="500" rows="3" class="form-input"></textarea>
       </div>
-      
+
+      <div id="form-error" class="text-error hidden"></div>
+
       <div class="price-display" id="live-price-display">Current Price: 0 DKK</div>
-      
-      <button type="button" id="pay-button" class="btn-nordic">
+
+      <button type="button" id="pay-button" class="btn-nordic" disabled>
         Pay and Book
       </button>
     </form>
   </div>
 
   <!-- Модалка Stripe -->
-<div id="payment-modal" class="modal-overlay hidden">
-  
-  <div class="modal-box" onclick="event.stopPropagation()">
-    
-    <button id="close-modal" class="modal-close-btn">&times;</button>
-    
-    <h2 class="modal-title">Confirm and Pay</h2>
-    <p id="total-price" class="modal-price">Total: 0 DKK</p>
+  <div id="payment-modal" class="modal-overlay hidden">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button id="close-modal" type="button" class="modal-close-btn">&times;</button>
+      <h2 class="modal-title">Confirm and Pay</h2>
+      <p id="total-price" class="modal-price">Total: 0 DKK</p>
 
-    <div id="payment-request-button" class="hidden"></div>
+      <div id="payment-request-button" class="hidden"></div>
+      <div class="nordic-divider"><span>or pay with card</span></div>
 
-    <div class="nordic-divider">
-      <span>or pay with card</span>
+      <form id="payment-form">
+        <div id="card-element"></div>
+        <div id="card-errors" class="text-error hidden" role="alert"></div>
+        <button type="submit" id="submit-stripe" class="btn-nordic m-top-20">
+          Pay Now
+        </button>
+      </form>
     </div>
-
-    <form id="payment-form">
-      <div id="card-element"></div>
-      <div id="card-errors" class="text-error hidden" role="alert"></div>
-
-      <button type="submit" id="submit-stripe" class="btn-nordic m-top-20">
-        Pay Now
-      </button>
-    </form>
-
   </div>
 
-</div>
-
-  <script src="https://jsdelivr.net"></script>
   <script src="bookscript.js"></script>
 </body>
 </html>
