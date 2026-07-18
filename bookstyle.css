@@ -82,22 +82,77 @@ body {
   margin-bottom: 40px;
 }
 
-/* ===== SERVICES GRID ===== */
-.services-grid {
-  display: grid;
-  gap: 20px;
-  margin-bottom: 30px;
+/* ============================================================
+   BRAND B2C/B2B TOGGLE — matches the homepage pricing toggle
+   exactly (same colors, sizing, animation). This is the only
+   place on the page that needs the small Tailwind-like utility
+   classes used in the toggle markup, so they're defined here
+   rather than pulling in all of Tailwind.
+   ============================================================ */
+.flex { display: flex; }
+.justify-center { justify-content: center; }
+.items-center { align-items: center; }
+.flex-1 { flex: 1 1 0%; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.overflow-hidden { overflow: hidden; }
+.cursor-pointer { cursor: pointer; }
+.text-center { text-align: center; }
+.text-sm { font-size: 0.875rem; }
+.font-bold { font-weight: 700; }
+.mb-12 { margin-bottom: 3rem; }
+.p-1 { padding: 0.25rem; }
+.w-72 { width: 18rem; }
+.h-12 { height: 3rem; }
+.h-10 { height: 2.5rem; }
+.rounded-full { border-radius: 9999px; }
+.z-10 { z-index: 10; }
+.bg-gray-200 { background-color: #e5e7eb; }
+.shadow-inner { box-shadow: inset 0 2px 4px rgba(0,0,0,0.06); }
+.shadow-md { box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.transition-all { transition-property: all; }
+.transition-colors { transition-property: color, background-color, border-color; }
+.duration-300 { transition-duration: 300ms; }
+.ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+
+#toggle-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 288px;
+  height: 48px;
+  background-color: #f1f5f9;
+  padding: 4px;
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
 }
 
-@media(min-width: 600px) {
-  .services-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+#toggle-bg {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: 138px;
+  left: 4px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: #e2e8f0;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  z-index: 1;
 }
 
-.select-wrapper.disabled-select {
-  opacity: 0.5;
-  pointer-events: none;
+#text-b2c,
+#text-b2b {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  color: #1e293b;
 }
 
 /* ===== FORM ===== */
@@ -131,11 +186,6 @@ label {
   border-color: #1e293b;
   background: #ffffff;
   outline: none;
-}
-
-.form-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .pointer {
@@ -240,7 +290,7 @@ label {
   padding-top: 30px;
 }
 
-/* ===== ERRORS ===== */
+/* ===== ERRORS / SUCCESS ===== */
 .border-red-500 {
   border-color: #ef4444 !important;
 }
@@ -251,17 +301,66 @@ label {
   margin-top: 5px;
 }
 
-/* ===== MODAL ===== */
-/* NOTE: .modal-overlay sets display:flex and used to be declared AFTER
-   .hidden in this file. With equal specificity, the later rule wins,
-   so .hidden's display:none was being silently overridden and the
-   modal stayed visible/covering the page at all times, even with the
-   "hidden" class applied. Marking .hidden as !important fixes this
-   regardless of declaration order. */
+.text-success {
+  color: #16a34a;
+  font-size: 14px;
+  margin-top: 5px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
 .hidden {
   display: none !important;
 }
 
+/* ===== EXTRA / DYNAMIC FIELDS ===== */
+#individual-extra-fields .form-group {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* ===== B2B POLICY (collapsible) ===== */
+.policy-toggle {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.policy-toggle:hover {
+  color: #1e293b;
+}
+
+.policy-content {
+  margin-top: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.policy-content ul {
+  padding-left: 18px;
+  margin: 8px 0;
+}
+
+.policy-content p {
+  margin: 0 0 10px 0;
+}
+
+/* ===== MODAL ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
