@@ -17,29 +17,33 @@ function formatNumber(n) {
 }
 
 // ============================================================
-// LOAD SERVICE CONFIG FROM BACKEND, THEN BUILD THE PAGE
+// PAGE INIT — the toggle, calendars and buttons must all work
+// even if the backend is unreachable, so wiring them up does NOT
+// wait on the /api/services fetch. Only the service dropdowns
+// (which need real data) depend on that fetch succeeding.
 // ============================================================
-async function loadServicesAndInit() {
-  try {
-    const res = await fetch(`${API_BASE}/api/services`);
-    SERVICES = await res.json();
-  } catch (err) {
-    console.error('Could not load services config', err);
-    const err1 = $('individual-form-error');
-    if (err1) {
-      err1.textContent = 'Could not load services. Please refresh the page or try again later.';
-      err1.classList.remove('hidden');
-    }
-    return;
-  }
-
-  populateSelect($('individual-select'), SERVICES.individual);
-  populateSelect($('business-select'), SERVICES.business);
-
+function initStaticUI() {
   setupToggle();
   setupIndividualPanel();
   setupBusinessPanel();
   setupPolicyToggle();
+}
+
+async function loadServices() {
+  try {
+    const res = await fetch(`${API_BASE}/api/services`);
+    if (!res.ok) throw new Error('Bad response');
+    SERVICES = await res.json();
+    populateSelect($('individual-select'), SERVICES.individual);
+    populateSelect($('business-select'), SERVICES.business);
+  } catch (err) {
+    console.error('Could not load services config', err);
+    const err1 = $('individual-form-error');
+    if (err1) {
+      err1.textContent = 'Could not load the services list from the server. The toggle and calendar still work, but please check BOOKING_API_BASE in booking.html and that the backend is running.';
+      err1.classList.remove('hidden');
+    }
+  }
 }
 
 function populateSelect(selectEl, services) {
@@ -645,5 +649,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const modal = $('payment-modal');
   if (modal) modal.addEventListener('click', closeModal);
 
-  loadServicesAndInit();
+  initStaticUI();
+  loadServices();
 });
