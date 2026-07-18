@@ -95,6 +95,11 @@ body {
   }
 }
 
+.select-wrapper.disabled-select {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* ===== FORM ===== */
 label {
   font-size: 11px;
@@ -126,6 +131,11 @@ label {
   border-color: #1e293b;
   background: #ffffff;
   outline: none;
+}
+
+.form-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .pointer {
@@ -186,6 +196,7 @@ label {
   background: #f1f5f9;
   color: #cbd5e1;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* ===== PRICE ===== */
@@ -210,7 +221,7 @@ label {
   transition: all 0.25s ease;
 }
 
-.btn-nordic:hover {
+.btn-nordic:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
@@ -240,11 +251,17 @@ label {
   margin-top: 5px;
 }
 
+/* ===== MODAL ===== */
+/* NOTE: .modal-overlay sets display:flex and used to be declared AFTER
+   .hidden in this file. With equal specificity, the later rule wins,
+   so .hidden's display:none was being silently overridden and the
+   modal stayed visible/covering the page at all times, even with the
+   "hidden" class applied. Marking .hidden as !important fixes this
+   regardless of declaration order. */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-/* ===== MODAL ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
