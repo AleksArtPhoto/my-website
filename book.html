@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="bookstyle.css" />
 
   <script>
-    window.BOOKING_API_BASE = "https://aleksart-backend-1.onrender.com";
+    window.BOOKING_API_BASE = "https://YOUR-BACKEND-DOMAIN.example.com";
     window.STRIPE_PUBLIC_KEY = "pk_test_51TsjW52OiI7C4UiJ2CvPzcnwl1b6a3URDnthT3j81ZQS57TZTvFsVhn9qlYSz4vCdPuNSDCsL98mNWaGw7D1fPYP002hNzDntt";
   </script>
 </head>
@@ -30,10 +30,10 @@
         <span class="brand-name">Aleks Art Photo</span>
       </div>
       <nav class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="home.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#contact">Contacts</a>
+        <a href="services.html">Services</a>
+        <a href="home.html#contact">Contacts</a>
       </nav>
     </div>
   </header>
@@ -66,6 +66,10 @@
       <div class="gift-card-option">
         <input type="checkbox" id="gift-certificate">
         <label for="gift-certificate" class="checkbox-label">Buy as a Gift Certificate</label>
+      </div>
+      <div class="form-group hidden" id="gift-recipient-group">
+        <label>Full name of the recipient *</label>
+        <input type="text" id="gift-recipient-name" class="form-input" />
       </div>
 
       <!-- Calendar + time (hidden for services with no calendar) -->
