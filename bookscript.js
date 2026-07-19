@@ -602,7 +602,7 @@ let cardElement;
 async function initStripePayment(clientSecret) {
   elements = stripe.elements();
   if (cardElement) cardElement.unmount();
-  cardElement = elements.create('card');
+  cardElement = elements.create('card', { hidePostalCode: true });
   cardElement.mount('#card-element');
 
   const form = $('payment-form');
