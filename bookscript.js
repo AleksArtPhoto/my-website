@@ -152,6 +152,19 @@ function formatDate(d) {
   return `${y}-${m}-${day}`;
 }
 
+// Given a candidate start hour and a service's blockAfterHours rule,
+// returns the "HH:00" slots that starting there would occupy — used to
+// check ahead of time whether picking this start would collide with an
+// already-blocked hour later in the day (not just whether the start
+// hour itself happens to already be blocked).
+function computeWouldBeBlocked(startHour, blockAfterHours, workEndHour) {
+  if (blockAfterHours === null || blockAfterHours === undefined) return [`${startHour.toString().padStart(2, '0')}:00`];
+  const endHour = blockAfterHours === 'fullday' ? workEndHour : Math.min(startHour + blockAfterHours, workEndHour);
+  const slots = [];
+  for (let h = startHour; h <= endHour; h++) slots.push(`${h.toString().padStart(2, '0')}:00`);
+  return slots;
+}
+
 function renderTimeSlots(prefix, category) {
   const container = $(`${prefix}-time-slots`);
   const display = $(`${prefix}-selected-time-display`);
@@ -164,6 +177,7 @@ function renderTimeSlots(prefix, category) {
   const now = new Date();
   const isToday = date === formatDate(now);
   const { workStartHour, workEndHour } = SERVICES;
+  const service = state[category].service;
 
   for (let h = workStartHour; h <= workEndHour; h++) {
     const time = `${h.toString().padStart(2, '0')}:00`;
@@ -174,7 +188,11 @@ function renderTimeSlots(prefix, category) {
     btn.textContent = time;
 
     const isPast = isToday && h <= now.getHours();
-    const isBlocked = state[category].blockedTimes.includes(time);
+
+    // Would starting HERE, with the currently selected service's own
+    // buffer, reach into an hour that's already taken by someone else?
+    const wouldOccupy = service ? computeWouldBeBlocked(h, service.blockAfterHours, workEndHour) : [time];
+    const isBlocked = wouldOccupy.some((t) => state[category].blockedTimes.includes(t));
 
     if (isPast || isBlocked) btn.disabled = true;
     if (state[category].time === time) btn.classList.add('slot-btn-selected');
@@ -222,7 +240,12 @@ function setupIndividualPanel() {
   });
 
   const giftCheckbox = $('gift-certificate');
-  if (giftCheckbox) giftCheckbox.addEventListener('change', updateIndividualPayButtonState);
+  if (giftCheckbox) {
+    giftCheckbox.addEventListener('change', () => {
+      $('gift-recipient-group').classList.toggle('hidden', !giftCheckbox.checked);
+      updateIndividualPayButtonState();
+    });
+  }
 
   const payBtn = $('individual-pay-button');
   payBtn.addEventListener('click', onIndividualPayClick);
@@ -353,16 +376,12 @@ function updateIndividualPayButtonState() {
 
 function getIndividualContact() {
   const form = $('individual-form');
-  const gift = $('gift-certificate').checked;
-  let comment = form.comment.value.trim();
-  if (gift) comment = `[GIFT PURCHASE] ${comment}`.trim();
-
   return {
     name: form.name.value.trim(),
     email: form.email.value.trim(),
     phone: form.phone.value.trim(),
     location: form.location.value.trim(),
-    comment,
+    comment: form.comment.value.trim(),
   };
 }
 
@@ -405,6 +424,14 @@ async function onIndividualPayClick() {
     }
   }
 
+  const isGift = $('gift-certificate').checked;
+  const recipientName = $('gift-recipient-name').value.trim();
+  if (isGift && !recipientName) {
+    formError.textContent = 'Please enter the full name of the recipient.';
+    formError.classList.remove('hidden');
+    return;
+  }
+
   const payBtn = $('individual-pay-button');
   payBtn.disabled = true;
   payBtn.textContent = 'Preparing payment...';
@@ -419,6 +446,8 @@ async function onIndividualPayClick() {
         time: needsCalendar ? state.individual.time : null,
         customer: contact,
         extra,
+        isGift,
+        recipientName: isGift ? recipientName : null,
       }),
     });
 
